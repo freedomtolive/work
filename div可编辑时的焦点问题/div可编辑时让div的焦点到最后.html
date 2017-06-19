@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<style>
+			.div1{
+				width:300px;
+				height:30px;
+				font:20px/30px "宋体";
+				padding:0 20px;
+				background:pink;
+			}
+		</style>
+	</head>
+	<script src="./jquery.min.js"></script>
+
+	<body>
+		<div class="div1" contenteditable="true">我的焦点在最后面</div>
+		<script>
+			let edit = $(".div1")[0];
+			edit.onfocus = function () {
+	        	window.setTimeout(function () {
+		            var sel, range;
+		            if (window.getSelection && document.createRange) {
+		              range = document.createRange();
+		              range.selectNodeContents(edit);
+		              range.collapse(true);
+		              range.setEnd(edit, edit.childNodes.length);
+		              range.setStart(edit, edit.childNodes.length);
+		              sel = window.getSelection();
+		              sel.removeAllRanges();
+		              sel.addRange(range);
+		            } else if (document.body.createTextRange) {
+		              range = document.body.createTextRange();
+		              range.moveToElementText(edit);
+		              range.collapse(true);
+		              range.select();
+	           		}
+	          	}, 0)
+	        }
+        	$(".div1").focus(); 
+		</script>
+	</body>
+</html>
