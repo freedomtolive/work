@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<style>
+			.div1{
+				width:100px;
+				height:50px;
+				background:red;
+				font-size:12px;
+				line-height:50px;
+				text-align: center;
+				color:#fff;
+				cursor:pointer;
+			}
+		</style>
+		<script>
+			
+		</script>
+	</head>
+	<body>
+		<div class="div1">倒计时开始</div>
+		<div id="leftTimeTag"></div>
+		<script src="./jquery.min.js"></script>
+		<script>
+			var dateTime = null;
+			$(".div1").click(function(){
+				dateTime = new Date().getTime()
+			 	timer();
+			})
+			  
+			function timer(){
+			   interval = setInterval("timer1()",1000);  
+			}  
+			  
+			function timer1(){ 
+			    var leftTime =  new Date().getTime() -  dateTime;  
+			    leftTime = 15*60*1000  - leftTime;  
+			    var minute =parseInt(leftTime/1000/60%60,10);   
+			    var second = parseInt(leftTime/1000%60,10);  
+			    var min = checkTime(minute);  
+			    var sec = checkTime(second);  
+			    $("#leftTimeTag").html(min + ":" + sec);  
+			        if(leftTime < 1000){  
+			        alert("hello 倒计时结束");  
+			        clearInterval(interval);  
+			      }  
+			}  
+			  
+			function checkTime(i){  
+			    if(i < 10 ){  
+			        i = "0" + i;  
+			    }  
+			    return i;  
+			}   
+		</script>
+	</body>
+</html>
