@@ -133,17 +133,17 @@ Page({
           wx.openSetting({
             success(tag) {
               if (tag.authSetting["scope.userInfo"]) {  // 用户在设置页选择同意授权
-                // wx.showLoading({
-                //   title: '正在生成...',
-                // })
+                wx.showLoading({
+                  title: '正在生成...',
+                })
                 this.canvasDraw();
               }
             }
           });
         } else {   //  用户已经授权
-          // wx.showLoading({
-          //   title: '正在生成...',
-          // })
+          wx.showLoading({
+            title: '正在生成...',
+          })
           this.canvasDraw();
         }
       }
@@ -202,14 +202,14 @@ Page({
             that.setData({
               canvasImageSrc: res.tempFilePath
             })
-            // wx.hideLoading();
-            // wx.showToast({
-              // title: '保存成功',
-            // });
+            wx.hideLoading();
+            wx.showToast({
+              title: '保存成功',
+            });
           },
-          // fail() {
-            // wx.hideLoading()
-          // }
+          fail() {
+            wx.hideLoading()
+          }
         })
       }
     });
