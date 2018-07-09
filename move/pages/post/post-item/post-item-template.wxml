@@ -1,0 +1,17 @@
+<template name="postItem">
+  <view class="postConWrap">
+    <view class="postAuthor">
+      <image class="postAuthorImg" src="{{avatar}}"></image>
+      <text class="postDate">{{date}}</text>
+    </view>
+    <text class="postTitle">{{title}}</text>
+    <image class="postImg" src="{{imgSrc}}"></image>
+    <text class="postContent">{{content}}</text>
+    <view class="postLike">
+      <image class="postLikeImg" src="/images/icon/chat.png"></image>
+      <text class="postLikeFt">{{reading}}</text>
+      <image class="postLikeImg" src="/images/icon/chat1.png"></image>
+      <text class="postLikeFt">{{collection}}</text>
+    </view>
+  </view>
+</template>

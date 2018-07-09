@@ -1,0 +1,10 @@
+@import "./post-item/post-item-template";
+.bannerWrap{
+  width:750rpx;
+  height:500rpx;
+}
+.bannerWrap image{
+  width:100%;
+  height:100%;
+}
+

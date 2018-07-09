@@ -1,0 +1,10 @@
+<template name="starsTemplate">
+  <view class="stars-cotainer">
+    <view class="stars">
+      <block wx:for="{{5}}" wx:key="{{item}}">
+        <image src="{{(index+1)*2>rating?'/images/icon/none-star.png':'/images/icon/star.png'}}"></image>
+      </block>
+    </view>
+    <text class="starScore">{{rating}}</text>
+  </view>
+</template>

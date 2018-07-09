@@ -1,0 +1,11 @@
+<import src="../movie-item/movie-template" />
+
+<template name="movieGridTemplate">
+  <view scroll-y="true" scroll-x = "false"  class="gridBox clearfix">
+    <block wx:for="{{movies}}" wx:for-item="movie" wx:key="index" >
+        <view class="singleViewBpx"> 
+          <template is="movieTemplate" data="{{...movie}}" /> 
+        </view>
+    </block>
+  </view> 
+</template>
