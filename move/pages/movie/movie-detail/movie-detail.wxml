@@ -1,0 +1,59 @@
+<import src="../stars/stars" />
+<view class="box" catchtap='shareHide'>
+  <image class="headerImg" src="{{movie.movieImg}}" mode="aspectFill" />
+  <view class="headImgHover" data-src="{{movie.movieImg}}" catchtap="viewMovePostImg">
+    <text class="mainTit">{{movie.title}}</text>
+    <text class="subTit">{{movie.country + " . " +movie.year }}</text>
+    <view class="like">
+        <text class="hightLightFont">{{movie.wishCount}}</text>
+        <text class="plainFont">人喜欢</text>
+        <text class="hightLightFont">{{movie.commentCount}}</text>
+        <text class="plainFont">条评论</text>
+    </view>
+  </view>
+  <image class="movieImg" src="{{movie.movieImg}}"></image>
+  <view class="summary">
+    <view class="originalTit">
+      <text>{{movie.originalTitle}}</text>
+    </view>
+    <view class="flexRow">
+      <template is="starsTemplate" data="{{rating:movie.store}}" />
+    </view>
+    <view class="flex-row">
+      <text class="mark">导演</text>
+      <text class="markFt">{{movie.directors}}</text>  
+    </view>
+     <view class="flex-row">
+      <text class="mark">影人</text>
+      <text class="markFt">{{movie.casts}}</text>  
+    </view>
+     <view class="flex-row">
+      <text class="mark">类型</text>
+      <text class="markFt">{{movie.genres}}</text>  
+    </view>
+  </view>
+  <view class="hr"></view>
+  <view class="synopsis">
+    <text>剧情简介</text>
+    <text class="summaryCon">{{movie.summary}}</text>
+  </view>
+  <view class="hr"></view>
+  <view class="cast">
+    <text class="castFont">影人</text>
+    <scroll-view class="castImgs" scroll-x="true">
+      <block wx:for="{{movie.castsInfo}}" wx:for-item="item" wx:key="index">
+        <view class="castContainer">
+          <image class="castImg" src="{{item.img}}"></image>
+          <text class="castName">{{item.name}}</text>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <view class="movieDetailShare wx:if={{shareShow?'show':''}}">
+    <button open-type='getUserInfo' bindgetuserinfo="canvasShow">生成分享海报</button>
+    <button open-type="share" catchtap="onShareAppMessage">分享给微信</button>
+  </view>
+  <view class="movieDetailBtn" catchtap="shareShow"></view>
+  <canvas class="shareCanvas" canvas-id="shareCanvas" catchtap="canvasHide"></canvas>
+  <image class="canvasImage  wx:if={{canvasShow?'shareCanvasShow':''}}" src='{{canvasImageSrc}}'></image>
+</view>
