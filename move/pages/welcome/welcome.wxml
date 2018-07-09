@@ -1,7 +1,0 @@
-<view class="box">
-  <image class='avatarImg' src="/images/avatar.png"></image>
-  <text class="userName">Hello,低调</text>
-  <view class="motoBox" bindtap="onTap">
-    <text class="moto">开启小程序之旅</text>
-  </view>
-</view>
