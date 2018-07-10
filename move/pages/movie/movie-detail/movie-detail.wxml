@@ -1,4 +1,5 @@
 <import src="../stars/stars" />
+
 <view class="box" catchtap='shareHide'>
   <image class="headerImg" src="{{movie.movieImg}}" mode="aspectFill" />
   <view class="headImgHover" data-src="{{movie.movieImg}}" catchtap="viewMovePostImg">
@@ -51,9 +52,11 @@
   </view>
   <view class="movieDetailShare wx:if={{shareShow?'show':''}}">
     <button open-type='getUserInfo' bindgetuserinfo="canvasShow">生成分享海报</button>
-    <button open-type="share" catchtap="onShareAppMessage">分享给微信</button>
+    <button open-type="share">分享给微信</button>
   </view>
   <view class="movieDetailBtn" catchtap="shareShow"></view>
-  <canvas class="shareCanvas" canvas-id="shareCanvas" catchtap="canvasHide"></canvas>
-  <image class="canvasImage  wx:if={{canvasShow?'shareCanvasShow':''}}" src='{{canvasImageSrc}}'></image>
+  <view class="canvasBox">
+    <canvas class="shareCanvas" canvas-id="shareCanvas"></canvas>
+  </view>
+  <view class="shareView wwx:if={{shareCanvasShow?'':'hide'}}"></view>
 </view>

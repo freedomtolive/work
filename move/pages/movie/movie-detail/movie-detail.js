@@ -4,9 +4,9 @@ var utils = require("../../../utils/utils.js");
 Page({
   data: {
     movie:{},
-    shareShow:false,
-    canvasShow: false,
-    canvasImageSrc:null
+    canvasImageSrc:null,
+    imageShow:false,
+    shareCanvasShow:true
   },
   onLoad: function (options) {
     var that = this;
@@ -77,15 +77,14 @@ Page({
   },
   // 分享
   onShareAppMessage: function (res) {
-    console.log(res.from)
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
     }
     return {
-      title: this.data.movie.title,
+      title: this.data.imageShow ?"":this.data.movie.title,
       path: '/page/user?' + this.data.id,
-      imageUrl: this.data.movie.movieImg,
+      imageUrl: this.data.imageShow?this.data.canvasImageSrc:this.data.movie.movieImg,
       success:function(e){
         wx.showShareMenu({
           // 要求小程序返回分享目标信息
@@ -94,37 +93,33 @@ Page({
       }
     }
   },
-  canvasHide(){
-    this.setData({
-      canvasShow:false
-    })
-  },
   // 绘制海报
   canvasShow(res){
     this.setData({
       userName: res.detail.userInfo.nickName,
-      head_img: res.detail.userInfo.avatarUrl,
-      canvasShow: true
+      head_img: res.detail.userInfo.avatarUrl
     })
-    this.handlePoster();
+    this.getImageInfo(this.data.movie.movieImg);
+    console.log(this.data.movie.movieImg)
   },
   // 图片保存到本地赞不可用(需要查看原因)
-  // getImageInfo(url) {    //  图片缓存本地的方法
-  //   if (typeof url === 'string') {
-  //     wx.getImageInfo({   //  小程序获取图片信息API
-  //       src: url,
-  //       success: function (res) {
-  //         console.log
-  //         this.setData({
-  //           head_img: res.path
-  //         })
-  //       },
-  //       fail(err) {
-  //         console.log(err)
-  //       }
-  //     })
-  //   }
-  // }
+  getImageInfo(url) {    //  图片缓存本地的方法
+    var that = this;
+    if (typeof url === 'string') {
+      wx.getImageInfo({   //  小程序获取图片信息API
+        src: url,
+        success: function (res) {
+          that.setData({
+            movieImg: res.path
+          })
+         that.handlePoster()
+        },
+        fail(err) {
+          console.log(err)
+        }
+      })
+    }
+  },
   // 点击绘制按钮判断用户是否授权
   handlePoster(e) {
     wx.getSetting({  // 获取用户设置
@@ -157,7 +152,7 @@ Page({
     ctx.setFillStyle('#fff');
     ctx.fillRect(0, 483, 375, 100);
     // 绘制图片
-    ctx.drawImage(this.data.movie.movieImg, 40, 60, 295,200 );
+    ctx.drawImage(this.data.movieImg, 40, 60, 295,200 );
     const strLength = 30;
     var str = this.data.movie.directors + this.data.movie.title + this.data.movie.casts;
     ctx.setFillStyle('#000');
@@ -196,23 +191,32 @@ Page({
       fileType: 'jpg',
       success:(res)=>{
         console.log(res)
-        wx.saveImageToPhotosAlbum({
-          filePath: res.tempFilePath,
-          success(res2) {
-            that.setData({
-              canvasImageSrc: res.tempFilePath
-            })
-            wx.hideLoading();
-            wx.showToast({
-              title: '保存成功',
-            });
-          },
-          fail() {
-            wx.hideLoading()
-          }
+        that.setData({
+          canvasImageSrc: res.tempFilePath
         })
+        wx.previewImage({
+          urls: this.data.canvasImageSrc.split(',')
+        })
+        wx.hideLoading()
+        // 保存图片
+        // wx.saveImageToPhotosAlbum({
+        //   filePath: res.tempFilePath,
+        //   success(res2) {
+        //     that.setData({
+        //       canvasImageSrc: res.tempFilePath
+        //     })
+        //     wx.hideLoading();
+        //     wx.showToast({
+        //       title: '保存成功',
+        //     });
+        //   },
+        //   fail() {
+        //     wx.hideLoading()
+        //   }
+        // })
       }
     });
   }
+   
 
 })

@@ -175,20 +175,18 @@
 .shareCanvas{
   width:750rpx;
   height:100%;
-  background:#000;
-  position:fixed; 
-  top:0;
+  position:fixed;
+  top:-99999px;
   left:0;
-  opacity: 0;
   visibility: hidden;
-  transition:all .3s ease-out;
+
+}
+.hide{
+  display: none;
 }
 .canvasImage{
   width:100%;
   height:100%;
-  position:fixed;
-  top:0;
-  left:0;
   z-index:1;
   opacity:0;
   background:#000;
@@ -199,6 +197,5 @@
   opacity:1;
   visibility: visible;
 }
-
 
 
