@@ -5,8 +5,10 @@
           <!-- 
             tag:要生成的标签，默认为a标签
             event:修改触发事件的事件类型 
+            exact:精确匹配（匹配时不包含子页面）
+            不输入exact为包含匹配，即路由配跑到了就显示选中状态
           -->
-        <router-link :to=index tag="li" event="mouseover">
+        <router-link to="/" tag="li" exact event="mouseover">
           <i class="fa fa-home"></i>
           <span>index</span>
         </router-link>
@@ -15,7 +17,7 @@
           <router-link :to="{path:'/child'}" active-class="isActive">child</router-link>
         </li>
         <li>
-          <router-link to="/about">about</router-link>
+          <router-link :to="about" >about</router-link>
         </li>
       </ul>
     </div>
@@ -30,7 +32,8 @@ export default {
   name: 'App',
   data(){
     return {
-      index:'/index'
+      index:'/index',
+      about:'/about'
     }
   }
 }
