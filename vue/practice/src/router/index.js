@@ -7,6 +7,7 @@ import notFond from '@/components/404'
 import work from '@/views/work'
 import study from '@/views/study'
 import hobby from '@/views/hobby'
+import silder from '@/views/silder'
 
 // 将路由作为vue的插件
 Vue.use(Router)
@@ -14,6 +15,25 @@ Vue.use(Router)
 export default new Router({
   mode:"history",
   linkActiveClass:"on",/* 设置路由选中的class */
+  scrollBehavior(to,from,savePosition){ // 滚动条的行为 点击浏览器的前进后退或切换导航触发
+      console.log(to); //记录当前要进入的目标路由对象的信息
+      console.log(from); //记录离开的路由对象的信息
+      console.log(savePosition) //记录滚动条的目标(点击前进后退时记录值)
+
+      // 前进后退时记录滚动条坐标
+     /* if(savePosition){
+        return savePosition
+      }else{
+        return {x:0,y:0}
+      } */
+
+      // 锚点 判断hash是否存在，如果存在，页面跳到hash的位置
+      // if(to.hash){ 
+      //   return {
+      //     selector: to.hash
+      //   }
+      // }
+  },
   routes: [
     {
       path:'/',
@@ -29,7 +49,10 @@ export default new Router({
     {
       path:'/child',
       name: 'child',
-      component: child
+      components : { // 渲染多个组件
+        default : child, //渲染的第一个组件
+        silderName:silder // 渲染的第二个组件(name为silderName的router-view)
+      }
     },
     {
       path:'/about',
@@ -43,11 +66,14 @@ export default new Router({
           component:study
         },
         {
-          path:'work',
+          path:'work',  // about/work 相对于主路由
+          name: 'work',
           component:work
+          
         },
         {
-          path:'hobby',
+          path:'/hobby',  // /hobby 相对于根路径 组件会渲染，但是头部导航不会匹配到
+          name: 'hobby',
           component:hobby
         }
       ]

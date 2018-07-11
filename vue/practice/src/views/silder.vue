@@ -1,7 +1,6 @@
 <template>
-    <div>
-        <div>这是二级</div>
-        <div id="abc">进来应该在这里</div>
+    <div class="silder">
+        <h1>silder</h1>
     </div>
 </template>
 
@@ -14,4 +13,3 @@ export default {
 <style>
 
 </style>
-

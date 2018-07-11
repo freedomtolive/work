@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style="height:2000px;">
     <div class="nav-box">
       <ul class="nav">
           <!-- 
@@ -14,16 +14,18 @@
         </router-link>
         <li>
           <!-- 设置独立的选中时的class -->
-          <router-link :to="{path:'/child'}" active-class="isActive">child</router-link>
+          <router-link :to="{path:'/child#abc'}" active-class="isActive">child</router-link>
         </li>
         <li>
           <router-link :to="about" >about</router-link>
         </li>
       </ul>
     </div>
+    <router-view name="silderName"/> <!-- 命名视图：渲染多个组件时会使用name -->
     <!-- 想在每个替换的组件中加相同的class，可以加在router-view上
         如果子标签也填加了class，router-vue的class也会加在子元素上，和子元素的标签组合 -->
     <router-view class="center"/>
+    
   </div>
 </template>
 
