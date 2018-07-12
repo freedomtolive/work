@@ -19,6 +19,7 @@ module.exports = {
   rules: {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-unused-vars':0
+    'no-unused-vars':0,
+    "no-extra-parens":0
   }
 }

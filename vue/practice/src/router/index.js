@@ -17,9 +17,9 @@ export default new Router({
   mode:"history",
   linkActiveClass:"on",/* 设置路由选中的class */
   scrollBehavior(to,from,savePosition){ // 滚动条的行为 点击浏览器的前进后退或切换导航触发
-      console.log(to); //记录当前要进入的目标路由对象的信息
-      console.log(from); //记录离开的路由对象的信息
-      console.log(savePosition) //记录滚动条的目标(点击前进后退时记录值)
+      // console.log(to); //记录当前要进入的目标路由对象的信息
+      // console.log(from); //记录离开的路由对象的信息
+      // console.log(savePosition) //记录滚动条的目标(点击前进后退时记录值)
 
       // 前进后退时记录滚动条坐标
      /* if(savePosition){
@@ -80,7 +80,7 @@ export default new Router({
       ]
     },
     {
-      path:'/user/:userId？', //匹配的路径为 /user/1
+      path:'/user/:tip?/:userId?', //匹配的路径为 /user/vip/1 ?和正则中的？相同，匹配1个或0个 
       component:user
     },
     {
