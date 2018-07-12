@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import index from '@/components/index'
 import child from '@/components/child'
 import about from '@/components/about'
+import user from '@/components/user'
 import notFond from '@/components/404'
 import work from '@/views/work'
 import study from '@/views/study'
@@ -79,6 +80,10 @@ export default new Router({
       ]
     },
     {
+      path:'/user/:userId？', //匹配的路径为 /user/1
+      component:user
+    },
+    {
       // 当访问的路由不是上面几个时载入notFont
       // path:'*',
       // component:notFond
@@ -100,3 +105,4 @@ export default new Router({
     }
   ]
 })
+

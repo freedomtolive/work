@@ -19,6 +19,9 @@
         <li>
           <router-link :to="about" >about</router-link>
         </li>
+        <li>
+          <router-link to="/user" event="mouseover" >user</router-link>
+        </li>
       </ul>
     </div>
     <router-view name="silderName"/> <!-- 命名视图：渲染多个组件时会使用name -->
