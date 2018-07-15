@@ -36,9 +36,14 @@ export default new Router({
       // }
   },
   routes: [
+
+    // 在路由配置中，meta可以配置一些数据
     {
       path:'/',
-      component: index
+      component: index,
+      meta:{
+        index:0
+      }
     },
     {
       path: '/index',
@@ -53,6 +58,9 @@ export default new Router({
       components : { // 渲染多个组件
         default : child, //渲染的第一个组件
         silderName:silder // 渲染的第二个组件(name为silderName的router-view)
+      },
+      meta:{
+        index:1
       }
     },
     {
@@ -64,13 +72,15 @@ export default new Router({
           // 如果有子路由就不要在父路由内设置name值，将name值赋给子理由就可以
           path:'',
           name: 'about',
-          component:study
+          component:study,
+          meta:{
+            index:2
+          }
         },
         {
           path:'work',  // about/work 相对于主路由
           name: 'work',
           component:work
-          
         },
         {
           path:'/hobby',  // /hobby 相对于根路径 组件会渲染，但是头部导航不会匹配到
@@ -81,7 +91,10 @@ export default new Router({
     },
     {
       path:'/user/:tip?/:userId?', //匹配的路径为 /user/vip/1 ?和正则中的？相同，匹配1个或0个 
-      component:user
+      component: user,
+      meta: {
+        index: 3
+      }
     },
     {
       // 当访问的路由不是上面几个时载入notFont

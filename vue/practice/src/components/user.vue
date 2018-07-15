@@ -20,12 +20,15 @@
             <router-link exact to="?info=share">我的分享</router-link> -->
             <!-- query后的为查询字符串 -->
             <!-- <router-link exact :to="{path:'',query:{info:'follow',a:1}}">我的关注</router-link>  可加多个值 -->
-             <router-link exact :to="{path:'',query:{info:'follow'}}">我的关注</router-link>
+            <router-link exact :to="{path:'',query:{info:'follow'}}">我的关注</router-link>
             <router-link exact :to="{path:'',query:{info:'share'}}">我的分享</router-link>
             <!-- 拿查询字符串的方式，在vue实例上，所以可以展示，在vue.$route上 -->
-            <div>
-                {{$route.query}}
-            </div> 
+
+            <transition>
+                <div>
+                    {{$route.query}}
+                </div> 
+            </transition>
         </div>
     </div>
 </template>
@@ -75,8 +78,8 @@ export default {
     // 生命周期钩子函数
     created() {
         //this.$route 拿到这个实例的路由对象（里面可以拿到路由信息）
-        console.log(this.$route.params.userId)
-        console.log(this.$route.params.tip)  //获取路由后面的对应名称为userId的值，此处的userId通过router下的index设置为动态路径参数
+        // console.log(this.$route.params.userId)
+        // console.log(this.$route.params.tip)  //获取路由后面的对应名称为userId的值，此处的userId通过router下的index设置为动态路径参数
 
         // 服用这个组件，这个函数不会再次被调用
         // 地址一旦发生变化，$route会重新生成一个路由信息对象
