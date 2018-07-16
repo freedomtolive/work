@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="height:2000px;">
+  <div id="app">
     <div class="nav-box">
       <ul class="nav">
           <!-- 
