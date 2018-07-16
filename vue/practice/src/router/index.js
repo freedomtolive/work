@@ -13,7 +13,7 @@ import silder from '@/views/silder'
 // 将路由作为vue的插件
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   mode:"history",
   linkActiveClass:"on",/* 设置路由选中的class */
   scrollBehavior(to,from,savePosition){ // 滚动条的行为 点击浏览器的前进后退或切换导航触发
@@ -42,7 +42,8 @@ export default new Router({
       path:'/',
       component: index,
       meta:{
-        index:0
+        index:0,
+        title:"home"
       }
     },
     {
@@ -59,8 +60,14 @@ export default new Router({
         default : child, //渲染的第一个组件
         silderName:silder // 渲染的第二个组件(name为silderName的router-view)
       },
+      beforeEnter(to,from,next){
+        console.log("beforeEnter");
+        next();
+      },
       meta:{
-        index:1
+        index:1,
+        login:true,
+        title:"child"
       }
     },
     {
@@ -74,7 +81,8 @@ export default new Router({
           name: 'about',
           component:study,
           meta:{
-            index:2
+            index:2,
+            tiele:"about"
           }
         },
         {
@@ -93,7 +101,8 @@ export default new Router({
       path:'/user/:tip?/:userId?', //匹配的路径为 /user/vip/1 ?和正则中的？相同，匹配1个或0个 
       component: user,
       meta: {
-        index: 3
+        index: 3,
+        title:"user"
       }
     },
     {
@@ -119,3 +128,32 @@ export default new Router({
   ]
 })
 
+// 导航的钩子函数(router中)
+// 进入router之前
+// router.beforeEach((to,from,next)=>{
+  // to 目标导航的路由信息对象
+  // from 离开导航的路由信息对象
+  // next 判断是否进入导航，如果进入，需要执行next函数
+  // console.log("我是beforeEach,我在进入页面之前执行");
+  // next();
+  // 不进入导航可以给next传入false
+  // next(false);
+  // 重定向
+  // 实例：用login判断是否登录，如果未登录，跳转到login页面
+  // if(to.meta.login){
+  //   next("/login");
+  // }else{
+  //   next();
+  // }
+// })
+
+// router.afterEach((to,from)=>{
+//   if(to.meta.title){
+//     window.document.title = to.meta.title;
+//   }else{
+//     window.document.title = "默认页面";
+//   }
+// })
+
+
+export default router;
