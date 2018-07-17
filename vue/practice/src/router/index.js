@@ -61,7 +61,7 @@ let router = new Router({
         silderName:silder // 渲染的第二个组件(name为silderName的router-view)
       },
       beforeEnter(to,from,next){
-        console.log("beforeEnter");
+        // console.log("beforeEnter");
         next();
       },
       meta:{
