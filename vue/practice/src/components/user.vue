@@ -69,7 +69,7 @@ export default {
         // 监控$route(路由信息)
         // 路劲发生变化，$route会重新赋值，监控这个属性，会执行这个函数
         $route(){
-            console.log(this.$route.params.userId);
+            // console.log(this.$route.params.userId);
             let id=this.$route.params.userId;
 
             this.getData();
