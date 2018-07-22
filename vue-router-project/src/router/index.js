@@ -65,7 +65,7 @@ let router =  new Router({
 
 router.beforeEach((to,from,next)=>{
   // matched为一个数组，数组的第一项为父级路由信息，数组的第二项为子路由信息···
-  console.log(to.matched)
+  // console.log(to.matched)
   // 数组的some方法：遍历数组，数组中有一项符合条件，即返回true，否则返回false
   if(to.matched.some((item)=>item.meta.login)){
     // 拿到跟实例,才可以运用跟实例中的方法

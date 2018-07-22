@@ -6,7 +6,6 @@
         <router-link v-if="!isLogin" to="/login" tag="span">登录</router-link>
         <img v-if="isLogin" src="../assets/portrait.png" alt="">
       </div>
-
     </div>
     <div class="phrase">
       一起学习Vue-router
@@ -17,7 +16,6 @@
     </div>
   </div>
 </template>
-
 <script>
   export default {
     name: 'home',
@@ -33,6 +31,8 @@
       this.isLogin = info.login;
     }
   }
+
+  
 </script>
 <style>
 
