@@ -5,8 +5,16 @@ import Home from '@/components/home'
 import Layout from '@/views/layout'
 import Project from '@/views/backend/project'
 import Workbench from '@/views/backend/workbench'
+
+// let Layout = (resolve) =>{
+//   return
+// }
+
+
 import Doc from '@/views/backend/doc'
 import Login from '@/components/login'
+
+
 
 
 Vue.use(Router)

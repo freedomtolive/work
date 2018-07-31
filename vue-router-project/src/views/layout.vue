@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import Header from '@/components/header';
+  // import Header from '@/components/header';
 
   let flags = {
     project : "我的文档",
@@ -41,6 +41,14 @@
     },
     components:{
       headerNav : Header
+      // (resolve) => { //resolve表示成功 
+      //   // 利用定时器模拟ajax请求
+      //   console.log(resolve)
+      //   setTimeout(()=>{
+      //     resolve(require('@/components/header'));
+      //     resolve(Header);
+      //   },2000)
+      // }
     }
   }
 </script>

@@ -52,39 +52,40 @@
     //     console.log(this.$route.hash.slice(1))
     //   }
     // }
+    beforeRouteEnter(to,from,next){
+      next((vm)=>{
+        vm.animated(to);   //进入页面时直接调用animated
+      })
+    },
     beforeRouteUpdate(to,from,next){
-      // console.log(to.hash)
-      this.animated(to);
+      this.animated(to);  //点击导航时切换调用animated
       next();
     },
     methods:{
       animated(to){
+        function animateFun(time){
+          requestAnimationFrame(animateFun);
+          TWEEN.update(time);
+        }
 
-        
-        // function animateFrame(time){
-        //   requestAnimationFrame(animateFrame);
-        //   TWEEN.update(time);
-        // }
+        if(to.hash){
+          var el = document.getElementById(to.hash.slice(1));
+          var doc = document.getElementsByClassName("doc")[0];
 
-        // if(to.hash){
-        //   var el = document.getElementById(to.hash.slice(1));
-        //   var doc = document.getElementsByClassName("doc")[0];
-
-        //   if(el){
-        //     new TWEEN.Tween({
-        //       number:doc.scrollTop   //起始位置
-        //     })
-        //     .to({
-        //       number:el.offsetTop   //结束位置
-        //     })
-        //     .onUpdate(function(){
-        //       doc.scrollTop = this.number.toFixed(0)
-        //     })
-        //     .start();
-        //   }
-        // }else{
-
-        // }
+          if(el){
+            animateFun();
+            new TWEEN.Tween({
+              number:doc.scrollTop   //起始位置
+            })
+            .to({
+              number:el.offsetTop   //结束位置
+            },500) //运动时间
+            .onUpdate(function(){
+              doc.scrollTop = this.number.toFixed(0) //更新
+            })
+            .start();
+          }
+        }
       }
     }
   }
