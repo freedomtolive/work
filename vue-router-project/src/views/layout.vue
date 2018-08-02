@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  // import Header from '@/components/header';
+  import Header from '@/components/header';
 
   let flags = {
     project : "我的文档",
