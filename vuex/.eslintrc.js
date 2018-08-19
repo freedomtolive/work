@@ -30,6 +30,14 @@ module.exports = {
     "no-multiple-empty-lines": [0, {"max": 100}],
     //关闭禁止混用tab和空格
     "no-mixed-spaces-and-tabs": [0],
-    "no-trailing-spaces": 0
+    "no-trailing-spaces": 0,
+    "generator-star-spacing": 0,
+    // 关闭缩进风格检查
+    "indent": 0,
+    "key-spacing": 0,
+    //不以新行开始的块{前面要不要有空格)
+    "space-before-blocks":0,
+    "quotes":0,
+    "space-before-function-paren":0
   }
 }
