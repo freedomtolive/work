@@ -19,10 +19,18 @@
         methods : {
             addHandle(){
                 // 改变状态，提交一个mutation（addHandle）
-                this.$store.commit("addIncrement")
+                // 如果异步的时候就不需要在这里触发mutation，而是要触发action
+                // this.$store.commit("addIncrement", {num:5})    
+                // 触发mutation用commit //触发action用dispatch
+                this.$store.dispatch("addAction") 
             },
             deHandle(){
-                this.$store.commit("deIncrement")
+                // this.$store.commit("deIncrement", {num:5})
+                // 可以通过提交对象的方式将mutation写在一起
+                this.$store.commit({
+                    type:"deIncrement",
+                    num:10
+                })
             }
         }
     }
