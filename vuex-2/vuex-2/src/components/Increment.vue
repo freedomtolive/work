@@ -5,6 +5,7 @@
             <input type="button" value="-" @click = "deHandle">    
             <span>{{num}}</span>
             <input type="button" value="+" @click = "addHandle" >
+            <p>{{num2}}</p>
         </div> 
     </div>
 </template>
@@ -14,6 +15,10 @@
         computed : {
             num(){
                 return this.$store.state.count
+            },
+            // num2去从getter中拿值，拿到逻辑处理后的值
+            num2(){
+                return this.$store.getters.filterCount
             }
         },
         methods : {
