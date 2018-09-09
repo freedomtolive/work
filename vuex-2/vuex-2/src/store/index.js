@@ -39,7 +39,7 @@ let store = new Vuex.Store({
         // 这里可以用es6中的结构赋值
         addAction({commit, dispatch}){  
             // 此处的commit就为上面的context.commit，dispatch就为context.dispatch
-            console.log(commit.dispatch)
+            console.log(commit, dispatch)
             setTimeout(() => {
                 // 通过异步方式调用mutation,同样是提交一个commit
                 commit("addIncrement", {num:5})
