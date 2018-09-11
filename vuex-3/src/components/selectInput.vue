@@ -1,8 +1,8 @@
 <template>
     <div class="clearFix">
       <input 
-        @click = "showListHandle"
-        :value="title"
+        @click = "changeShow"
+        :value = "title"
       />
       <input type="button" value="GO" >
       <span></span>
@@ -10,16 +10,20 @@
 </template>
 
 <script>
+import {mapState} from "vuex"
 export default {
     // 先拿到值
-    props:['isShow', "title"],
-    computed : {
-        initShow (){
+    props : ["isShow"],
+    computed:{
+        initShow(){
             return this.isShow
-        }
+        },
+        ...mapState({
+            title : "title"
+        })
     },
-    methods : {
-        showListHandle (){
+    methods:{
+        changeShow (){
             this.$emit("update:isShow", !this.initShow)
         }
     }
