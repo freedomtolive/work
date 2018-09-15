@@ -17,10 +17,11 @@ export default {
     props:["data"],
     computed:{
         getList(){
-            return this.$store.state.list
+            return this.$store.state.selectModule.list
         }
     },
     methods:{
+    // 注意：在提交的时候不需要指定哪个模块的mutations
         ...$store.mapMutations({
             changeItemHandle:"changeItem"
         })

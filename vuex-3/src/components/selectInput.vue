@@ -10,7 +10,9 @@
 </template>
 
 <script>
-import {mapState} from "vuex"
+// import {mapState} from "vuex"
+import $store from "vuex"
+
 export default {
     // 先拿到值
     props : ["isShow"],
@@ -18,9 +20,12 @@ export default {
         initShow(){
             return this.isShow
         },
-        ...mapState({
-            title : "title"
-        })
+        // ...mapState({
+        //     title : "title"
+        // })
+        title(){
+            return this.$store.state.selectModule.title
+        }
     },
     methods:{
         changeShow (){
