@@ -36,7 +36,7 @@ var http = axios.create({
     // 查询字符串
     params:{
         book:"123"
-    },
+    }
     // 转换请求 只适用于post（类似于中间键，发送数据之前会进行数据转化，转化为想要的数据）
     // transformRequest:[ function(data){
         // 函数中可以对数据进行处理
@@ -54,7 +54,7 @@ var http = axios.create({
     //     return status < 400
     // }
     // 执行取消请求
-    cancelToken:source.token
+    // cancelToken:source.token
 })
 
 export default {
@@ -116,11 +116,64 @@ export default {
         //     console.log(error)
         // })
 
-        http.get('/getList')
-        .then((data) => {
-            this.list = data.data.list
+        // http.get('/getList')
+        // .then((data) => {
+        //     this.list = data.data.list
+        //     console.log(data)
+        // })
+        // .catch((error) => {
+        //     if (axios.isCancel(error)){
+        //         console.log(error.message)
+        //     } else {
+        //         console.log(error)
+        //     }
+        // })
+
+        // 执行取消时打印 取消时走的是error
+        // source.cancel("操作被用户取消")
+        
+        // 并发请求(只有两组数据都拿到才会返回内容)
+        function http1(){
+            return http.get("/getList")
+        }
+
+        function http2(){
+            return http.get("/getList")
+        }
+
+        // axios.all([http1(), http2()]).then((data) => {
+        //     // data传回的是一个数组，包含返回的数据
+        //     console.log(data)
+        // })
+        // .catch((error) => {
+        //     if (axios.isCancel(error)){
+        //         console.log(error.message)
+        //     } else {
+        //         console.log(error)
+        //     }
+        // })
+
+        // 拦截请求
+        http.interceptors.request.use(function(config){
+            // 可以对数据进一步操作，类似于中间件
+            console.log("拦截了")
+            console.log(config)
+            return config
+        }, function(data){
             console.log(data)
+            console.log("reponse")
+            // axios.interceptors.request.eject(data)
+            return data
         })
+
+        // 取消拦截
+        // axios.interceptors.request.eject(myInterceptor)
+
+        // 可以用axios.spread方法取用参数代替返回的数组
+        axios.all([http1(), http2()]).then(axios.spread((res1, res2) => {
+            console.log(res1)
+            console.log(res2)
+        }))
         .catch((error) => {
             if (axios.isCancel(error)){
                 console.log(error.message)
@@ -128,11 +181,8 @@ export default {
                 console.log(error)
             }
         })
-
-        // 执行取消时打印 取消时走的是error
-        // source.cancel("操作被用户取消")
     }
-}
+} 
 </script>
 
 <style>
