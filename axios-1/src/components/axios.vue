@@ -133,13 +133,13 @@ export default {
         // source.cancel("操作被用户取消")
         
         // 并发请求(只有两组数据都拿到才会返回内容)
-        function http1(){
-            return http.get("/getList")
-        }
+        // function http1(){
+        //     return http.get("/getList")
+        // }
 
-        function http2(){
-            return http.get("/getList")
-        }
+        // function http2(){
+        //     return http.get("/getList")
+        // }
 
         // axios.all([http1(), http2()]).then((data) => {
         //     // data传回的是一个数组，包含返回的数据
@@ -154,32 +154,40 @@ export default {
         // })
 
         // 拦截请求
-        http.interceptors.request.use(function(config){
-            // 可以对数据进一步操作，类似于中间件
-            console.log("拦截了")
-            console.log(config)
-            return config
-        }, function(data){
+        // http.interceptors.request.use(function(config){
+        //     // 可以对数据进一步操作，类似于中间件
+        //     console.log("拦截了")
+        //     console.log(config)
+        //     return config
+        // }, function(data){
+        //     console.log(data)
+        //     console.log("reponse")
+        //     // axios.interceptors.request.eject(data)
+        //     return data
+        // })
+
+        // // 取消拦截
+        // // axios.interceptors.request.eject(myInterceptor)
+
+        // // 可以用axios.spread方法取用参数代替返回的数组
+        // axios.all([http1(), http2()]).then(axios.spread((res1, res2) => {
+        //     console.log(res1)
+        //     console.log(res2)
+        // }))
+        // .catch((error) => {
+        //     if (axios.isCancel(error)){
+        //         console.log(error.message)
+        //     } else {
+        //         console.log(error)
+        //     }
+        // })
+
+        // 将axios作为vue的插件使用(通过this.$http调用插件)
+        this.$http.get('https://www.easy-mock.com/mock/5b97d7aba7e9571f105d3f89/example/axios/getList').then((data) => {
             console.log(data)
-            console.log("reponse")
-            // axios.interceptors.request.eject(data)
-            return data
         })
-
-        // 取消拦截
-        // axios.interceptors.request.eject(myInterceptor)
-
-        // 可以用axios.spread方法取用参数代替返回的数组
-        axios.all([http1(), http2()]).then(axios.spread((res1, res2) => {
-            console.log(res1)
-            console.log(res2)
-        }))
         .catch((error) => {
-            if (axios.isCancel(error)){
-                console.log(error.message)
-            } else {
-                console.log(error)
-            }
+            console.log(error)
         })
     }
 } 
