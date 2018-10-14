@@ -1,0 +1,14 @@
+text{
+  font-family: MicroftSoft YaHei;
+  font-size:24rpx;
+}
+.clearfix::after{
+  content:"";
+  display: block;
+  clear:both;
+}
+.hr{
+  height:1px;
+  width:100%;
+  background-color:#999;
+}
