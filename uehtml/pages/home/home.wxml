@@ -1,9 +1,49 @@
-<view class="head">
-  <view class="head-ico">
-    <view class="head-ico-line head-ico-top"></view>
-    <view class="head-ico-line head-ico-bot"></view>
+<view class="continer">
+  <view class="head">
+    <view class="head-ico">
+      <view class="head-ico-line head-ico-top"></view>
+      <view class="head-ico-line head-ico-bot"></view>
+    </view>
+    <image class="logo" src="/images/logo.png"></image>
+    <image class="head-log-btn" src="/images/head-log-btn.png"></image>
   </view>
-  <image class="logo" src="/images/logo.png"></image>
-  <image class="head-log-btn" src="/images/head-log-btn.png"></image>
+  <view class="hr"></view>
+  <view class="head-select">
+    <view class="head-select-item">
+      <text>全部</text>
+      <image src='/images/bot-ico.png'></image> 
+    </view>
+    <view class="head-select-item">
+      <text>最新推荐</text>
+      <image src='/images/bot-ico.png'></image> 
+    </view>
+    <view class="head-select-item">
+      <text>所有者</text>
+      <image src='/images/bot-ico.png'></image> 
+    </view>
+  </view>
+  <view class="hr"></view>
+  <view class="workBox">
+    <block wx:for="{{list}}" wx:key="postId" wx:for-index = "index">
+      <view class="workItem">
+        <image class="workImg" src="/images/111.jpg"></image>
+        <view class="workCon">
+          <text class="workTit">{{item.title}} {{item.subTitlt}}</text>
+          <view class="authorBox">
+            <text class="authorName">作者：</text>
+            <text class="authorFt">{{item.author}}</text>
+          </view>
+          <view class="workBot">
+            <view class="viewEye">
+              <image class="viewImg" src="/images/eye.png"></image>
+              <text>{{item.number}}</text>
+            </view>
+            <text>{{item.company}}</text>
+          </view> 
+        </view>
+      </view>
+    </block>
+  </view>
 </view>
-<view class="hr"></view>
+
+
