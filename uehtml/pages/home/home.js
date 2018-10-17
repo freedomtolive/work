@@ -26,6 +26,10 @@ Page({
       this.data.isEmpty = false;
     }
     this.setData({list: list})
+    utils.http("/work/getList", (data) => {
+      this.setData({ list: data.list })
+      console.log(this.data)
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
