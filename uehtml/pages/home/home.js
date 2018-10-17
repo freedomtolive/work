@@ -20,16 +20,12 @@ Page({
   addHomeList(data){
     var list = [];
     if(!this.data.isEmpty){
-      list = this.data.list.concat(data.list)
+      list = [...this.data.list, ...data.list];
     }else{
       list = data.list;
       this.data.isEmpty = false;
     }
     this.setData({list: list})
-    utils.http("/work/getList", (data) => {
-      this.setData({ list: data.list })
-      console.log(this.data)
-    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
