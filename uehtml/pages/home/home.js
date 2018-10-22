@@ -7,7 +7,8 @@ Page({
    */
   data: {
     list:[],
-    isEmpty:true
+    isEmpty:true,
+    fixedBl:false
   },
 
   /**
@@ -15,6 +16,7 @@ Page({
    */
   onLoad: function (options) {
     utils.http("/work/getList", this.addHomeList);
+    
   },
   // 页面渲染函数
   addHomeList(data){
@@ -69,7 +71,13 @@ Page({
   onReachBottom: function () {
     utils.http("/work/getList", this.addHomeList);
   },
-
+  // onPageScroll:function(e){
+  //   if(e.scrollTop>0){
+  //     this.setData({fixedBl: true})
+  //   }else{
+  //     this.setData({fixedBl: false})
+  //   }
+  // },
   /**
    * 用户点击右上角分享
    */

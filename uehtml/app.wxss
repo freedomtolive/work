@@ -12,3 +12,13 @@ text{
   width:100%;
   background-color:#f0f0f0;
 }
+/*统一样式*/
+.continer{
+  background:#f4f4f4;
+}
+.workBox{
+  /* margin-top:184rpx; */
+  padding:20rpx;
+  width:100%;
+  box-sizing: border-box;
+}

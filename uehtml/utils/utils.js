@@ -22,6 +22,15 @@ function http(a, callBack) {
   })
 }
 
+function getInfo(callBack){
+  wx.getSystemInfo({
+    success:(data)=>{
+      callBack(data)
+    }
+  })
+}
+
 module.exports = {
-  http:http
+  http:http,
+  getInfo:getInfo
 }

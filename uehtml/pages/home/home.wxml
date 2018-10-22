@@ -1,28 +1,25 @@
+<import src="../head/head"/>
+
 <view class="continer">
-  <view class="head">
-    <view class="head-ico">
-      <view class="head-ico-line head-ico-top"></view>
-      <view class="head-ico-line head-ico-bot"></view>
+  <view class="fixHead">
+    <template is="uednaHead"/> 
+    <view class="hr"></view>
+    <view class="head-select">
+      <view class="head-select-item">
+        <text>全部</text>
+        <image src='/images/bot-ico.png'></image> 
+      </view>
+      <view class="head-select-item">
+        <text>最新推荐</text>
+        <image src='/images/bot-ico.png'></image> 
+      </view>
+      <view class="head-select-item">
+        <text>所有者</text>
+        <image src='/images/bot-ico.png'></image> 
+      </view>
     </view>
-    <image class="logo" src="/images/logo.png"></image>
-    <image class="head-log-btn" src="/images/head-log-btn.png"></image>
+    <view class="hr"></view>
   </view>
-  <view class="hr"></view>
-  <view class="head-select">
-    <view class="head-select-item">
-      <text>全部</text>
-      <image src='/images/bot-ico.png'></image> 
-    </view>
-    <view class="head-select-item">
-      <text>最新推荐</text>
-      <image src='/images/bot-ico.png'></image> 
-    </view>
-    <view class="head-select-item">
-      <text>所有者</text>
-      <image src='/images/bot-ico.png'></image> 
-    </view>
-  </view>
-  <view class="hr"></view>
   <view class="workBox">
     <block wx:for="{{list}}" wx:key="postId" wx:for-index = "index">
       <view class="workItem">

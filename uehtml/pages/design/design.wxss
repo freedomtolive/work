@@ -1,1 +1,45 @@
 /* pages/design/design.wxss */
+@import "../head/head";
+
+.designItem{
+  padding:20rpx;
+  background-color:#fff;
+}
+.itemHead{
+  height:80rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom:20rpx;
+}
+.itemHeadImg{
+  width:60rpx;
+  height:60rpx;
+  border-radius:50%;
+  margin-right:20rpx;
+}
+.itemCon{
+  margin-right:auto;
+}
+.itemTit{
+  line-height:40rpx;
+  font-size: 28rpx;
+  color:#656565;
+}
+.itemInfo{
+  color:#939393;
+}
+.itemPos{
+  margin-right:20rpx;
+}
+.followIco{
+  width:34rpx;
+  height:32rpx;
+}
+.designImgBox{
+  display: flex;
+  justify-content: space-between;
+}
+.designImg{
+  width:216rpx;
+  height:140rpx;
+}

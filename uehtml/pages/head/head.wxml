@@ -1,0 +1,10 @@
+<template name="uednaHead">
+  <view class="head">
+    <view class="head-ico">
+      <view class="head-ico-line head-ico-top"></view>
+      <view class="head-ico-line head-ico-bot"></view>
+    </view>
+    <image class="logo" src="/images/logo.png"></image>
+    <image class="head-log-btn" src="/images/head-log-btn.png"></image>
+  </view>
+</template>
