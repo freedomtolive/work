@@ -63,6 +63,7 @@ Page({
   onPullDownRefresh: function () {
     this.setData({ list: [] })
     utils.http("/work/getList", this.addHomeList);
+    wx.stopPullDownRefresh();
   },
 
   /**

@@ -1,26 +1,28 @@
 <!--pages/design/design.wxml-->
-<import src="../head/head"/>
+ <import src="../head/head"/> 
 
 <view class="continer">
-  <template is="uednaHead" />
+  <!-- <template is="uednaHead" /> -->
   <view class="workBox">
-    <view class="designItem">
-      <view class="itemHead">
-        <image class="itemHeadImg" src="/images/design/design-head-ico.jpg"></image>
-        <view class="itemCon">
-          <text class="itemTit">双木堂书法篆刻</text>
-          <view class="itemInfo">
-              <text class="itemPos">城市：上海 静安区</text>
-              <text class="itemWork">行业：平面设计</text>
+    <block wx:for="{{list}}" wx:key="postId" wx:for-index = "index">
+      <view class="designItem">
+        <view class="itemHead">
+          <image class="itemHeadImg" src="/images/design/design-head-ico.jpg"></image>
+          <view class="itemCon">
+            <text class="itemTit">{{item.title}}</text>
+            <view class="itemInfo">
+                <text class="itemPos">城市：{{item.pos}}</text>
+                <text class="itemWork">行业：{{item.work}}</text>
+            </view>
           </view>
+          <image class="followIco" src="/images/design/follow-ico.png"></image>
+        </view> 
+        <view class="designImgBox">
+          <image class="designImg" src="/images/design/item-img.jpg"></image>
+          <image class="designImg" src="/images/design/item-img.jpg"></image>
+          <image class="designImg" src="/images/design/item-img.jpg"></image>
         </view>
-        <image class="followIco" src="/images/design/follow-ico.png"></image>
-      </view> 
-      <view class="designImgBox">
-        <image class="designImg" src="/images/design/item-img.jpg"></image>
-        <image class="designImg" src="/images/design/item-img.jpg"></image>
-        <image class="designImg" src="/images/design/item-img.jpg"></image>
       </view>
-    </view>
+    </block>
   </view>
 </view>

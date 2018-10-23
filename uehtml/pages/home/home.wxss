@@ -1,14 +1,14 @@
 /* pages/home/home.wxss */
 @import "../head/head";
-/* .fixHead{
+.fixHead{
   position:fixed;
   width:100%;
   left:0;
   top:0;
 }
 .workBox{
-  margin-top:184rpx;
-} */
+  padding-top:82rpx;
+}
 .workBox .workItem{
   width:100%;
   background:#fff;

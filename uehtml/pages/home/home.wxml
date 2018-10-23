@@ -2,7 +2,7 @@
 
 <view class="continer">
   <view class="fixHead">
-    <template is="uednaHead"/> 
+    <!-- <template is="uednaHead"/>  -->
     <view class="hr"></view>
     <view class="head-select">
       <view class="head-select-item">
