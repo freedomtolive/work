@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/person/person",
     "pages/home/home",
     "pages/design/design",
     "pages/team/team"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#f2f2f2",
-    "navigationBarTextStyle": "#fff",
+    "navigationBarBackgroundColor": "#f4f4f4",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uedna",
     "backgroundColor": "#eee",
     "backgroundTextStyle": "light"
@@ -26,8 +27,8 @@
         "selectedIconPath": "/images/tab/dianying_hl.png"
       },
       {
-        "pagePath": "pages/team/team",
-        "text": "团队",
+        "pagePath": "pages/person/person",
+        "text": "我",
         "iconPath": "images/tab/ciwei.png",
         "selectedIconPath": "/images/tab/ciwei_hl.png"
       }

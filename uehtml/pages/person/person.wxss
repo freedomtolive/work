@@ -1,0 +1,33 @@
+/* pages/person/person.wxss */
+page{
+  height:100%;
+}
+.continer{
+  height:100%
+}
+.imgBox{
+  padding-top:100rpx;
+  display: flex;
+  justify-content: center;
+}
+.personImg{
+  height:252rpx;
+  width:170rpx;
+}
+.persongFt{
+  display: flex;
+  justify-content: center;
+  margin-top:20rpx;
+  text-align: center;
+}
+.loginBtn{
+  width:300rpx;
+  height:80rpx;
+  background:#42b8f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#fff;
+  margin:60rpx auto 0;
+  border-radius:3px;
+}

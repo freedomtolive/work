@@ -1,0 +1,10 @@
+<!--pages/person/person.wxml-->
+<view class="continer">
+  <view class="imgBox">
+    <image class="personImg" src="/images/person-img.png"></image>
+  </view>
+  <text class="persongFt">登陆后就可以看到“我”啦</text>
+  <view class="loginBtn">
+    <text>登陆</text>
+  </view>
+</view>
