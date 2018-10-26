@@ -1,4 +1,5 @@
 var utils = require("../../utils/utils.js");
+var app = getApp();
 // pages/home/home.js
 Page({
 
@@ -15,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    utils.http("/work/getList", this.addHomeList);
+    utils.http(app.globalData.commonUrl + "/work/getList", this.addHomeList);
     
   },
   // 页面渲染函数

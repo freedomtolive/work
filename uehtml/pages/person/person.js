@@ -1,4 +1,5 @@
 // pages/person/person.js
+var utils = require("../../utils/utils.js");
 Page({
 
   /**
@@ -14,7 +15,45 @@ Page({
   onLoad: function (options) {
   
   },
-
+  getUser:function(){
+    wx.getUserInfo({
+      success:(data)=>{
+        this.logIn(data);
+      }
+    })
+  },
+  logIn:function(data){
+    wx.login({
+      success:(res)=>{
+        // 登陆
+        var code = res.code;
+        if (res.code) {
+          //发起网络请求
+          this.getUserId(code);
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      },
+      error:function(res){
+        console.log("登录失败！" + res.errMsg )
+      }
+    })
+  },
+  getUserId(code){
+    var url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx40efeb5d8f571045&secret=12e113e54de25e68f41b98b7d51db54f&js_code=" + code + "&grant_type=authorization_code";
+    utils.http(url,this.getFinishId);
+  },
+  getFinishId(data){
+    wx.setStorageSync("openid",data.openid);
+  },
+  getOpenId(code){
+    var url = "https://test.com/onLogin";
+    utils.http(url, this.logFinish, { code: code });
+    // 登陆成功
+    wx.navigateTo({
+      // 跳转
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -4,7 +4,7 @@
     <image class="personImg" src="/images/person-img.png"></image>
   </view>
   <text class="persongFt">登陆后就可以看到“我”啦</text>
-  <view class="loginBtn">
+  <button class="loginBtn" open-type="getUserInfo" bindtap='getUser'>
     <text>登陆</text>
-  </view>
+  </button>
 </view>

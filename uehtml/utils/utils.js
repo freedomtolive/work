@@ -1,11 +1,10 @@
 var app = getApp();
 
-function http(a, callBack) {
+function http(a, callBack,c) {
   var that = this;
   wx.request({
-    url: app.globalData.commonUrl + a,
-    data: {
-    },
+    url: a,
+    data: c,
     header: {
       "CONTENT-TYPE": "application/JSON"
     },

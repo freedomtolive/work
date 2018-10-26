@@ -1,5 +1,6 @@
 // pages/design/design.js
 let utils = require("../../utils/utils.js");
+var app = getApp();
 Page({
 
   /**
@@ -14,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    utils.http("/work/getDesignList", this.addDesignList);
+    utils.http(app.globalData.commonUrl + "/work/getDesignList", this.addDesignList);
   },
   addDesignList:function(data){
     var list = [];
