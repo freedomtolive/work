@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    loginOff:false
   },
 
   /**
@@ -44,14 +44,18 @@ Page({
     utils.http(url,this.getFinishId);
   },
   getFinishId(data){
-    wx.setStorageSync("openid",data.openid);
+    console.log(data)
+    // 登陆成功(存cookie，并且登录（此处应该发送ajax，这里就直接登录）)
+    wx.setStorageSync("openid", data.openid);
+    this.setData({
+      loginOff: true
+    })
   },
-  getOpenId(code){
-    var url = "https://test.com/onLogin";
-    utils.http(url, this.logFinish, { code: code });
-    // 登陆成功
-    wx.navigateTo({
-      // 跳转
+  // 退出
+  loginOff:function(){
+    wx.clearStorageSync("openid");
+    this.setData({
+      loginOff: false
     })
   },
   /**

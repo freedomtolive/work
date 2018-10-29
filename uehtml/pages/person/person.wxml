@@ -1,10 +1,35 @@
 <!--pages/person/person.wxml-->
 <view class="continer">
-  <view class="imgBox">
-    <image class="personImg" src="/images/person-img.png"></image>
+  <view class="logInPage" wx:if="{{!loginOff}}">
+    <view class="imgBox">
+      <image class="personImg" src="/images/person-img.png"></image>
+    </view>
+    <text class="persongFt">登陆后就可以看到“我”啦</text>
+    <button class="loginBtn" open-type="getUserInfo" bindtap='getUser'>
+      <text>登陆</text>
+    </button>
   </view>
-  <text class="persongFt">登陆后就可以看到“我”啦</text>
-  <button class="loginBtn" open-type="getUserInfo" bindtap='getUser'>
-    <text>登陆</text>
-  </button>
+  <view class="alsoPage" wx:if="{{loginOff}}">
+    <view class="loginHead">
+      <image class="loginHeadBg" src="/images/user/user-bg.png"></image>
+      <view class="userTop">
+        <image class="userIco" src="/images/user/user-ico.jpg"></image>
+        <text class="userName">低调低调</text>
+      </view>
+    </view>
+    <view class="userCon">
+      <view class="userItem">
+        <text class="usetText">粉丝</text>
+      </view>
+      <view class="userItem">
+        <text class="usetText">关注</text>
+      </view>
+      <view class="userItem">
+        <text class="usetText">人气</text>
+      </view>
+      <view class="userItem" bindtap='loginOff'>
+        <text class="usetText">退出</text>
+      </view>
+    </view>
+  </view>
 </view>

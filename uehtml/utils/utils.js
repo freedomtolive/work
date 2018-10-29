@@ -15,7 +15,7 @@ function http(a, callBack,c) {
       callBack(data.data, a);
     },
     fail: function (res) {
-      console.log(fail)
+      console.log(res)
     },
     complete: function (res) { },
   })

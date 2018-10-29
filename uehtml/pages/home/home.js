@@ -63,7 +63,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({ list: [] })
-    utils.http("/work/getList", this.addHomeList);
+    utils.http(app.globalData.commonUrl + "/work/getList", this.addHomeList);
     wx.stopPullDownRefresh();
   },
 
@@ -71,7 +71,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    utils.http("/work/getList", this.addHomeList);
+    utils.http(app.globalData.commonUrl + "/work/getList", this.addHomeList);
   },
   // onPageScroll:function(e){
   //   if(e.scrollTop>0){

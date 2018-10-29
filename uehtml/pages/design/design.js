@@ -60,7 +60,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({ list: [] })
-    utils.http("/work/getDesignList", this.addDesignList);
+    utils.http(app.globalData.commonUrl + "/work/getDesignList", this.addDesignList);
     wx.stopPullDownRefresh();
   },
 
@@ -68,7 +68,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    utils.http("/work/getDesignList", this.addDesignList);
+    utils.http(app.globalData.commonUrl + "/work/getDesignList", this.addDesignList);
   },
 
   /**
