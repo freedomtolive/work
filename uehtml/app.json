@@ -3,7 +3,9 @@
     "pages/person/person",
     "pages/home/home",
     "pages/design/design",
-    "pages/team/team"
+    "pages/team/team",
+    "pages/person/follow/follow",
+    "pages/person/fans/fans"
   ],
   "window": {
     "navigationBarBackgroundColor": "#f4f4f4",

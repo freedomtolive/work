@@ -18,10 +18,10 @@
       </view>
     </view>
     <view class="userCon">
-      <view class="userItem">
+      <view class="userItem" bindtap='fansFn'>
         <text class="usetText">粉丝</text>
       </view>
-      <view class="userItem">
+      <view class="userItem" bindtap='followFn'>
         <text class="usetText">关注</text>
       </view>
       <view class="userItem">

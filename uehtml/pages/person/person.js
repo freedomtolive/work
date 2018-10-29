@@ -13,7 +13,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let openId = wx.getStorageSync("openid");
+    if(openId){
+      // 此处要调登录的口
+      this.setData({
+        loginOff:true
+      })
+    }else{
+      this.setData({
+        loginOff: false
+      })
+    }
   },
   getUser:function(){
     wx.getUserInfo({
@@ -44,7 +54,6 @@ Page({
     utils.http(url,this.getFinishId);
   },
   getFinishId(data){
-    console.log(data)
     // 登陆成功(存cookie，并且登录（此处应该发送ajax，这里就直接登录）)
     wx.setStorageSync("openid", data.openid);
     this.setData({
@@ -56,6 +65,18 @@ Page({
     wx.clearStorageSync("openid");
     this.setData({
       loginOff: false
+    })
+  },
+  // 跳转关注页面
+  followFn:function(){
+    wx.navigateTo({
+      url: 'follow/follow'
+    })
+  },
+  // 跳转粉丝页面
+  fansFn: function () {
+    wx.navigateTo({
+      url: 'fans/fans'
     })
   },
   /**
