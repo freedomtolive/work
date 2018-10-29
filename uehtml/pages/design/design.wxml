@@ -1,28 +1,7 @@
 <!--pages/design/design.wxml-->
- <import src="../head/head"/> 
-
+<import src="../head/head"/> 
+<import src="design-list/design-list" />
 <view class="continer">
   <!-- <template is="uednaHead" /> -->
-  <view class="workBox">
-    <block wx:for="{{list}}" wx:key="postId" wx:for-index = "index">
-      <view class="designItem">
-        <view class="itemHead">
-          <image class="itemHeadImg" src="/images/design/design-head-ico.jpg"></image>
-          <view class="itemCon">
-            <text class="itemTit">{{item.title}}</text>
-            <view class="itemInfo">
-                <text class="itemPos">城市：{{item.pos}}</text>
-                <text class="itemWork">行业：{{item.work}}</text>
-            </view>
-          </view>
-          <image class="followIco" src="/images/design/follow-ico.png"></image>
-        </view> 
-        <view class="designImgBox">
-          <image class="designImg" src="/images/design/item-img.jpg"></image>
-          <image class="designImg" src="/images/design/item-img.jpg"></image>
-          <image class="designImg" src="/images/design/item-img.jpg"></image>
-        </view>
-      </view>
-    </block>
-  </view>
+  <template is="designList" data="{{list}}"></template>
 </view>

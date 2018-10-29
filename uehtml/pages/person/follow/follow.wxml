@@ -1,2 +1,6 @@
 <!--pages/person/follow/follow.wxml-->
-<text>pages/person/follow/follow.wxml</text>
+<import src="/pages/design/design-list/design-list"/> 
+
+<view class="continer">
+  <template is="designList" data="{{list}}"></template>
+</view>

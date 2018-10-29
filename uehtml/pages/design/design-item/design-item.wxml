@@ -1,0 +1,20 @@
+<template name="designItem">
+  <view class="designItem">
+    <view class="itemHead">
+      <image class="itemHeadImg" src="/images/design/design-head-ico.jpg"></image>
+      <view class="itemCon">
+        <text class="itemTit">{{title}}</text>
+        <view class="itemInfo">
+            <text class="itemPos">城市：{{pos}}</text>
+            <text class="itemWork">行业：{{work}}</text>
+        </view>
+      </view>
+      <image class="followIco" src="/images/design/follow-ico.png"></image>
+    </view> 
+    <view class="designImgBox">
+      <image class="designImg" src="/images/design/item-img.jpg"></image>
+      <image class="designImg" src="/images/design/item-img.jpg"></image>
+      <image class="designImg" src="/images/design/item-img.jpg"></image>
+    </view>
+  </view>
+</template>

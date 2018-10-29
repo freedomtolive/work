@@ -1,1 +1,2 @@
 /* pages/person/follow/follow.wxss */
+@import "../../design/design-list/design-list";

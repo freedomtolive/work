@@ -1,0 +1,9 @@
+<import src="../design-item/design-item"/> 
+
+<template name="designList">
+  <view class="workBox">
+    <block wx:for="{{list}}" wx:key="postId"  wx:for-item="item" wx:for-index = "index">
+      <template is="designItem" data="{{...item}}"></template>
+    </block>
+  </view>
+</template>
