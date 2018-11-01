@@ -2,5 +2,9 @@
 <import src="/pages/design/design-list/design-list"/> 
 
 <view class="continer">
-  <template is="designList" data="{{list}}"></template>
+  <template  wx:if="{{!isEmpty}}" is="designList" data="{{list}}"></template>
+  <view wx:if="{{isEmpty}}" class="emptyBox">
+      <image class="nullImg" src="/images/user/null.png"></image>
+      <text class="nullText">您还没有关注的人</text>
+  </view>
 </view>

@@ -13,8 +13,12 @@ text{
   background-color:#f0f0f0;
 }
 /*统一样式*/
+page{
+  height:100%;
+}
 .continer{
   background:#f4f4f4;
+  min-height:100%;
 }
 .workBox{
   /* margin-top:184rpx; */

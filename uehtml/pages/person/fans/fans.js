@@ -1,20 +1,33 @@
 // pages/person/fans/fans.js
+let app = getApp();
+let utils = require("../../../utils/utils.js");
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    list: [],
+    isEmpty: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    utils.http(app.globalData.commonUrl + "/work/getFollowList", this.addFollowList);
   },
-
+  addFollowList: function (data) {
+    var list = [];
+    if (!this.data.isEmpty) {
+      list = [...this.data.list, ...data.list];
+    } else {
+      list = data.list;
+      this.data.isEmpty = false;
+    }
+    this.setData({ list: list })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -47,14 +60,16 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.setData({ list: [] })
+    utils.http(app.globalData.commonUrl + "/work/getFollowList", this.addFollowList);
+    wx.stopPullDownRefresh();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    utils.http(app.globalData.commonUrl + "/work/getFollowList", this.addFollowList);
   },
 
   /**

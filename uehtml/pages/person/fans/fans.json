@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "粉丝"
+  "navigationBarTitleText": "粉丝",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": "100px",
+  "backgroundTextStyle": "dark"
 }

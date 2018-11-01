@@ -1,2 +1,10 @@
-<!--pages/person/fans/fans.wxml-->
-<text>pages/person/fans/fans.wxml</text>
+<!--pages/person/follow/follow.wxml-->
+<import src="/pages/design/design-list/design-list"/> 
+
+<view class="continer">
+  <template  wx:if="{{!isEmpty}}" is="designList" data="{{list}}"></template>
+  <view wx:if="{{isEmpty}}" class="emptyBox">
+      <image class="nullImg" src="/images/user/null.png"></image>
+      <text class="nullText">您还没有粉丝</text>
+  </view>
+</view>
