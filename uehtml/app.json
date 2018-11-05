@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/work/workItem",
     "pages/home/home",
     "pages/design/design",
     "pages/person/person",
