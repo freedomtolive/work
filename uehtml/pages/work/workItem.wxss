@@ -1,1 +1,13 @@
 /* pages/work/workItem.wxss */
+@import "../../wxParse/wxParse.wxss";
+.workImg{
+  width:100%;
+}
+.workWrap{
+  padding:40rpx;
+}
+.wxParse-p{
+  font-size:24rpx;
+  text-indent: 2em;
+  min-height:1em;
+}

@@ -1,20 +1,29 @@
 // pages/work/workItem.js
+var utils = require("../../utils/utils.js");
+var app = getApp();
+var WxParse = require("../../wxParse/wxParse.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    imgList:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    utils.http(app.globalData.commonUrl + "/work/workItem", this.addWork);
   },
-
+  addWork(data){
+    this.setData({
+      imgList: data.data.images,
+      content: data.data.content
+    })
+    WxParse.wxParse("article", 'html', this.data.content,this, 5)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

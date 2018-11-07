@@ -1,2 +1,13 @@
-<!--pages/work/workItem.wxml-->
-<text>pages/work/workItem.wxml</text>
+<view class="continer">
+  <view class="workWrap">
+    <view class="imageList">
+      <block wx:for="{{imgList}}" wx:key="postId" wx:for-index = "index">
+        <image class="workImg" src="/images/workItem/image.jpg"></image>
+      </block>
+    </view>
+    <view>
+      <import src="../../wxParse/wxParse.wxml"/> 
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+  </view>
+</view>
