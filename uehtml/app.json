@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/work/workItem",
     "pages/home/home",
     "pages/design/design",
     "pages/person/person",
     "pages/team/team",
     "pages/person/follow/follow",
-    "pages/person/fans/fans"
+    "pages/person/fans/fans",
+    "pages/work/workItem"
   ],
   "window": {
     "navigationBarBackgroundColor": "#f4f4f4",

@@ -22,7 +22,7 @@
   </view>
   <view class="workBox">
     <block wx:for="{{list}}" wx:key="postId" wx:for-index = "index">
-      <view class="workItem">
+      <view class="workItem" data-id="{{item.id}}" bindtap='enterWork'>
         <image class="workImg" src="/images/111.jpg"></image>
         <view class="workCon">
           <text class="workTit">{{item.title}} {{item.subTitlt}}</text>

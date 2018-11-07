@@ -18,11 +18,15 @@ Page({
     utils.http(app.globalData.commonUrl + "/work/workItem", this.addWork);
   },
   addWork(data){
+    console.log(data.data)
     this.setData({
       imgList: data.data.images,
-      content: data.data.content
+      content: data.data.content,
+      name: data.data.nickname,
+      location: data.data.location,
+      postdate: data.data.postdate
     })
-    WxParse.wxParse("article", 'html', this.data.content,this, 5)
+    // WxParse.wxParse("article", 'html', this.data.content,this, 5)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

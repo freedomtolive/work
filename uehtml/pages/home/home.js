@@ -30,6 +30,13 @@ Page({
     }
     this.setData({list: list})
   },
+  enterWork:function(ev){
+    // console.log(ev.currentTarget.dataset.id);
+    var id = ev.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../work/workItem?id=' + id
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

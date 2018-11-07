@@ -1,4 +1,15 @@
 <view class="continer">
+  <view class="workItemHead">
+    <view class="workItemL">
+      <view>
+        <text class="workTitle">{{name}}</text>
+      </view>
+      <view>
+        <text>{{location}} {{postdate}}</text>
+      </view>
+    </view>
+    <image class="workFollow" src="/images/design/follow-ico.png"></image>
+  </view>
   <view class="workWrap">
     <view class="imageList">
       <block wx:for="{{imgList}}" wx:key="postId" wx:for-index = "index">

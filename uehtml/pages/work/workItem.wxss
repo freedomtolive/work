@@ -1,13 +1,39 @@
 /* pages/work/workItem.wxss */
 @import "../../wxParse/wxParse.wxss";
+
+.workItemHead{
+  padding:0 40rpx;
+  display: flex;
+  align-items: center;
+}
+.workItemL{
+  margin-right:auto;
+}
+.workTitle{
+  font-size:28rpx;
+  line-height:40rpx;
+}
+.workFollow{
+  width:34rpx;
+  height:32rpx;
+  padding:20rpx;
+}
+
 .workImg{
   width:100%;
+  margin-top:20rpx;
+}
+.workImg:first-child{
+  margin-top:0;
 }
 .workWrap{
   padding:40rpx;
 }
 .wxParse-p{
   font-size:24rpx;
-  text-indent: 2em;
   min-height:1em;
+}
+.wxParse-img{
+  width:100%;
+  height:auto;
 }
