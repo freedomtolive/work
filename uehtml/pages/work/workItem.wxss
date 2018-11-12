@@ -27,7 +27,7 @@
   margin-top:0;
 }
 .workWrap{
-  padding:40rpx;
+  padding:20rpx;
 }
 .wxParse-p{
   font-size:24rpx;
@@ -36,4 +36,83 @@
 .wxParse-img{
   width:100%;
   height:auto;
+}
+
+.detalBox{
+  position:fixed;
+  bottom:140rpx;
+  right:60rpx;
+  display:flex;
+  align-items: center;
+}
+.likeBox{
+  display: flex;
+  width:140rpx;
+  height:80rpx;
+  align-items: center;
+  justify-content: center;
+  margin-right:20rpx;
+  background-color:#42b8f1;
+  border-radius:60rpx;
+  color:#fff;
+}
+.likeIco{
+  width:48rpx;
+  height:30rpx;
+  margin-right:30rpx;
+}
+.workDetalBtn{
+  width:80rpx;
+  height:80rpx;
+  background:red;
+  border-radius:50%;
+}
+
+.workDetailShare{
+  position:fixed;
+  bottom:0;
+  left:0;
+  z-index:1;
+  height:120rpx;
+  width:100%;
+  transform: translateY(100%);
+  opacity: 0;
+  transition:all .3s ease-out;
+  display: flex;
+}
+.workDetailShare.show{
+  transform: translateY(0);
+  opacity: 1;
+}
+.workDetailShare button{
+  width:100%;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border:null;
+  border-radius:0;
+  padding:0;
+  margin:0;
+  box-shadow: 0 0 0;
+}
+.workDetailShare button::after{
+  border:none;
+}
+.mask{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+.shareCanvas{
+  position:fixed;
+  width:100%;
+  height:100%; 
+  top:0;
+  left:-9999px;
+  z-index:-1;
+  visibility: hidden;
 }
