@@ -80,13 +80,6 @@ Page({
   onReachBottom: function () {
     utils.http(app.globalData.commonUrl + "/work/getList", this.addHomeList);
   },
-  // onPageScroll:function(e){
-  //   if(e.scrollTop>0){
-  //     this.setData({fixedBl: true})
-  //   }else{
-  //     this.setData({fixedBl: false})
-  //   }
-  // },
   /**
    * 用户点击右上角分享
    */

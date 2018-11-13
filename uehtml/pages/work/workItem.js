@@ -21,7 +21,6 @@ Page({
     utils.http(app.globalData.commonUrl + "/work/workItem", this.addWork);
   },
   addWork(data){
-    // console.log(data.data)
     this.setData({
       imgList: data.data.images,
       content: data.data.content,
@@ -29,9 +28,12 @@ Page({
       location: data.data.location,
       postdate: data.data.postdate,
       likes: data.data.likes,
-      headImg: "/images/111.jpg"
+      headImg: "/images/111.jpg",
+      comments: data.data.comments
     });
-    WxParse.wxParse("article", 'html', this.data.content,this, 5);
+    console.log(data)
+    console.log(this.data)
+    // WxParse.wxParse("article", 'html', this.data.content,this, 5);
   },
   shareShow:function(){
     this.setData({
@@ -168,7 +170,7 @@ Page({
   onReady: function () {
   
   },
-
+  
   /**
    * 生命周期函数--监听页面显示
    */

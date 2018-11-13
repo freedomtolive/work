@@ -1,0 +1,40 @@
+<template name="designItem">
+  <view class="commentWrap">
+    <view class="totalCommentBox">
+      <text>全部品论：{{comments.totalComment}}条</text>
+    </view>
+    <view class="commentBox">
+      <block wx:for="{{comments.comment}}" wx:key="id" wx:for-index = "index">
+        <view class="commentItem">
+            <image class="commentUserHead" src="{{item.userimage}}"></image>
+            <view class="commentCon">
+              <view class="commentInfo">
+                <text class="commentUser">{{item.nickname}}</text>
+                <text class="commentDate">{{item.postdate}}</text>
+              </view>
+              <text class="commentFt">{{item.content}}</text>
+              <view class="replyBox" wx:if="{{item.reply}}">
+                <block wx:for="{{item.reply}}" wx:for-item='relpy_item' wx:key="reply_index" wx:for-index = "reply_index">
+                  <view class="replyItem">
+                    <view class="replyUser">
+                      <text>{{relpy_item.nickname}}</text>
+                    </view>
+                    <view>
+                      <text>{{relpy_item.content}}</text>
+                    </view>
+                  </view>
+                </block>
+              </view>
+            </view>
+            <view class="replaveBox">
+              <text>[回复]</text>
+            </view>
+        </view>
+      </block>
+    </view>
+    <view class="commentInputWrap">
+      <input class="commentInput"></input>
+      <text class="commentInputBtn">评论</text>
+    </view>
+  </view>
+</template>

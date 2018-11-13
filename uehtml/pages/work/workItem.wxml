@@ -1,3 +1,4 @@
+<import src="/component/comment/comment"/> 
 <view class="continer">
   <view class="workItemHead">
     <view class="workItemL">
@@ -35,5 +36,6 @@
       </view>
       <view class="workDetalBtn" catchtap='shareShow'></view>
     </view>
+    <template is="designItem" data="{{comments}}"></template>
   </view>
 </view>
