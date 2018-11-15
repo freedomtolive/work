@@ -10,7 +10,9 @@ Page({
   data: {
     imgList:null,
     shareShow:false,
-    loginOff: app.globalData.loginOff
+    loginOff: null,
+    nickName: null,
+    avatarUrl: null
   },
 
   /**
@@ -19,9 +21,16 @@ Page({
   onLoad: function (options) {
     // 获取作品id
     // console.log(options.id)
+    this.setData({
+      loginOff: app.globalData.loginOff,
+      nickName: app.globalData.nickName,
+      avatarUrl: app.globalData.avatarUrl
+    })
     utils.http(app.globalData.commonUrl + "/work/workItem", this.addWork);
   },
   addWork(data){
+    var comment = data.data.comments;
+    comment.valStr = "";
     this.setData({
       imgList: data.data.images,
       content: data.data.content,
@@ -30,10 +39,9 @@ Page({
       postdate: data.data.postdate,
       likes: data.data.likes,
       headImg: "/images/111.jpg",
-      comments: data.data.comments
+      comments: comment
     });
-    console.log(data)
-    console.log(this.data)
+    console.log(this.data.comments)
     // WxParse.wxParse("article", 'html', this.data.content,this, 5);
   },
   shareShow:function(){
@@ -167,7 +175,9 @@ Page({
   },
   //获取输入框的内容
   commentTitle:function (e) {
-    this.data.commentTitle = e.detail.value;
+    this.setData({
+      commentTitle: e.detail.value
+    })
   },
   //回复
   replyFun : function(){
@@ -175,19 +185,25 @@ Page({
   },
   //评论
   commentFun : function(e){
+    if (!this.data.commentTitle) return;
     //评论的逻辑
     let commentObj = this.data.comments;
     let commentArr = commentObj.comment;
     let newCommentObj = {};
     if(this.data.loginOff){
-      
+      newCommentObj.nickname = this.data.nickName;
+      newCommentObj.userimage = this.data.avatarUrl;
+      newCommentObj.postdate = "1分钟内";
     }else{
 
     }
     newCommentObj.content = this.data.commentTitle;
     console.log(newCommentObj);
-    commentObj.comment.push;
-    console.log(commentArr[0],e);
+    commentObj.comment.unshift(newCommentObj);
+    commentObj.valStr = "";
+    this.setData({
+      comments:commentObj
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -7,16 +7,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    loginOff: app.globalData.loginOff,
-    avatarUrl: app.globalData.avatarUrl,
-    nickName: app.globalData.nickName
+    loginOff: null,
+    avatarUrl: null,
+    nickName: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({
+      loginOff: app.globalData.loginOff,
+      nickName: app.globalData.nickName,
+      avatarUrl: app.globalData.avatarUrl
+    })
   },
   getUser:function(){
     wx.getUserInfo({

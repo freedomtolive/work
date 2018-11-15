@@ -33,7 +33,7 @@
       </block>
     </view>
     <view class="commentInputWrap">
-      <input class="commentInput" name="comment" placeholder='请输入评论的内容' bindinput = "commentTitle"></input>
+      <input class="commentInput" name="comment" value="{{comments.valStr}}" placeholder='请输入评论的内容' bindinput = "commentTitle"></input>
       <text class="commentInputBtn" catchtap='commentFun'>评论</text>
     </view>
   </view>

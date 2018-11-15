@@ -11,14 +11,12 @@ App({
     if (openId) {
       // 此处要调登录的口
       that.globalData.loginOff = true;
-      
     } else {
       that.globalData.loginOff = false;
     }
-
     wx.getUserInfo({
       success: function(res){
-        that.globalData.nickName = res.nickName;
+        that.globalData.nickName = res.userInfo.nickName;
         that.globalData.avatarUrl = res.userInfo.avatarUrl;
       }
     })
