@@ -26,15 +26,15 @@
                 </block>
               </view>
             </view>
-            <view class="replaveBox">
+            <view class="replaveBox" catchtap='replyFun'>
               <text>[回复]</text>
             </view>
         </view>
       </block>
     </view>
     <view class="commentInputWrap">
-      <input class="commentInput"></input>
-      <text class="commentInputBtn">评论</text>
+      <input class="commentInput" name="comment" placeholder='请输入评论的内容' bindinput = "commentTitle"></input>
+      <text class="commentInputBtn" catchtap='commentFun'>评论</text>
     </view>
   </view>
 </template>

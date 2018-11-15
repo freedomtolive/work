@@ -13,8 +13,8 @@
     <view class="loginHead">
       <image class="loginHeadBg" src="/images/user/user-bg.png"></image>
       <view class="userTop">
-        <image class="userIco" src="/images/user/user-ico.jpg"></image>
-        <text class="userName">低调低调</text>
+        <image class="userIco" src="{{avatarUrl}}"></image>
+        <text class="userName">{{nickName}}</text>
       </view>
     </view>
     <view class="userCon">

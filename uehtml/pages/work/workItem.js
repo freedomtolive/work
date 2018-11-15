@@ -9,7 +9,8 @@ Page({
    */
   data: {
     imgList:null,
-    shareShow:false
+    shareShow:false,
+    loginOff: app.globalData.loginOff
   },
 
   /**
@@ -163,6 +164,30 @@ Page({
         wx.hideLoading();
       }
     });
+  },
+  //获取输入框的内容
+  commentTitle:function (e) {
+    this.data.commentTitle = e.detail.value;
+  },
+  //回复
+  replyFun : function(){
+    
+  },
+  //评论
+  commentFun : function(e){
+    //评论的逻辑
+    let commentObj = this.data.comments;
+    let commentArr = commentObj.comment;
+    let newCommentObj = {};
+    if(this.data.loginOff){
+      
+    }else{
+
+    }
+    newCommentObj.content = this.data.commentTitle;
+    console.log(newCommentObj);
+    commentObj.comment.push;
+    console.log(commentArr[0],e);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

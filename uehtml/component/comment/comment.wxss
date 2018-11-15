@@ -8,7 +8,7 @@
 }
 
 .commentBox{
-  padding-bottom:90rpx;
+  padding-bottom:140rpx;
 }
 .commentItem{
   display: flex;
@@ -28,7 +28,7 @@
 .replaveBox{
   margin:0 10rpx;
   color:#ff7800;
-  height:100%;
+  height:72rpx;
 }
 .commentUser{
   color: #1F8902;
