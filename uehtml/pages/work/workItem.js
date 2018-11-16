@@ -41,8 +41,7 @@ Page({
       headImg: "/images/111.jpg",
       comments: comment
     });
-    // console.log(this.data.comments)
-    // WxParse.wxParse("article", 'html', this.data.content,this, 5);
+    WxParse.wxParse("article", 'html', this.data.content,this, 5);
   },
   shareShow:function(){
     this.setData({
@@ -192,14 +191,13 @@ Page({
     let commentObj = this.data.comments;
     let commentArr = commentObj.comment;
     let newCommentObj = {};
-    if(this.data.loginOff){
-      newCommentObj.id = Math.random().toFixed(5)*10000;
-      newCommentObj.nickname = this.data.nickName;
-      newCommentObj.userimage = this.data.avatarUrl;
-      newCommentObj.postdate = "1分钟内";
-    }else{
-
+    if(!this.data.loginOff){
+      utils.getCode(this.loginSuc);
     }
+    newCommentObj.id = Math.random().toFixed(5) * 10000;
+    newCommentObj.nickname = this.data.nickName;
+    newCommentObj.userimage = this.data.avatarUrl;
+    newCommentObj.postdate = "1分钟内"
     newCommentObj.content = this.data.comments.valStr;
     commentObj.valStr = "";
     commentObj.comment.unshift(newCommentObj);
@@ -208,7 +206,11 @@ Page({
     this.setData({
       comments:commentObj
     })
-    console.log(this.data.comments)
+  },
+  loginSuc(data) {
+    // 登陆成功(存cookie，并且登录（此处应该发送ajax，这里就直接登录）)
+    wx.setStorageSync("openid", data.openid);
+    app.globalData.loginOff = true;
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
