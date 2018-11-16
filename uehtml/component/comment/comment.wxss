@@ -23,7 +23,7 @@
 .commentCon{
   margin-right:auto;
   flex:1;
-  line-height:30rpx;
+  /* line-height:30rpx; */
 }
 .replaveBox{
   margin:0 10rpx;

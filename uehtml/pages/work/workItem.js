@@ -41,7 +41,7 @@ Page({
       headImg: "/images/111.jpg",
       comments: comment
     });
-    console.log(this.data.comments)
+    // console.log(this.data.comments)
     // WxParse.wxParse("article", 'html', this.data.content,this, 5);
   },
   shareShow:function(){
@@ -175,8 +175,10 @@ Page({
   },
   //获取输入框的内容
   commentTitle:function (e) {
+    let comments = this.data.comments;
+    comments.valStr = e.detail.value;
     this.setData({
-      commentTitle: e.detail.value
+      comments: comments
     })
   },
   //回复
@@ -185,25 +187,28 @@ Page({
   },
   //评论
   commentFun : function(e){
-    if (!this.data.commentTitle) return;
+    if (!this.data.comments.valStr) return;
     //评论的逻辑
     let commentObj = this.data.comments;
     let commentArr = commentObj.comment;
     let newCommentObj = {};
     if(this.data.loginOff){
+      newCommentObj.id = Math.random().toFixed(5)*10000;
       newCommentObj.nickname = this.data.nickName;
       newCommentObj.userimage = this.data.avatarUrl;
       newCommentObj.postdate = "1分钟内";
     }else{
 
     }
-    newCommentObj.content = this.data.commentTitle;
-    console.log(newCommentObj);
-    commentObj.comment.unshift(newCommentObj);
+    newCommentObj.content = this.data.comments.valStr;
     commentObj.valStr = "";
+    commentObj.comment.unshift(newCommentObj);
+    var totalComment = this.data.comments.comment.length;
+    commentObj.totalComment = totalComment;
     this.setData({
       comments:commentObj
     })
+    console.log(this.data.comments)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
