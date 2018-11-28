@@ -6,6 +6,7 @@
     "pages/team/team",
     "pages/person/follow/follow",
     "pages/person/fans/fans",
+    "pages/user/userItem",
     "pages/work/workItem"
   ],
   "window": {

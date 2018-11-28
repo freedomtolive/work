@@ -1,4 +1,5 @@
 <import src="../head/head"/>
+<import src="/component/workList/workList" />
 
 <view class="continer">
   <view class="fixHead">
@@ -21,25 +22,7 @@
     <view class="hr"></view>
   </view>
   <view class="workBox">
-    <block wx:for="{{list}}" wx:key="postId" wx:for-index = "index">
-      <view class="workItem" data-id="{{item.id}}" bindtap='enterWork'>
-        <image class="workImg" src="/images/111.jpg"></image>
-        <view class="workCon">
-          <text class="workTit">{{item.title}} {{item.subTitlt}}</text>
-          <view class="authorBox">
-            <text class="authorName">作者：</text>
-            <text class="authorFt">{{item.author}}</text>
-          </view>
-          <view class="workBot">
-            <view class="viewEye">
-              <image class="viewImg" src="/images/eye.png"></image>
-              <text>{{item.number}}</text>
-            </view>
-            <text>{{item.company}}</text>
-          </view> 
-        </view>
-      </view>
-    </block>
+      <template is="workList" data="{{list}}" ></template>
   </view>
 </view>
 

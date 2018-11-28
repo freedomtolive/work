@@ -1,0 +1,31 @@
+<!--pages/user/userItem.wxml-->
+<import src="/component/workList/workList" />
+<view class="continer">
+  <view class="userHead">
+    <image class="userBg" src="/images/user/user-bg.png"></image>
+    <view class="userHeadCon">
+        <image class="userHeadIco" src="/images/user/user-ico.jpg"></image>
+        <view class="userFtBox">
+          <text class="userName">EddyLon</text>
+          <image class="urecIco" src="/images/user/urec.png"></image>
+        </view>
+    </view>
+    <view class="userInfoBox">
+        <view class="userInfoItem">
+          <text class="userInfoNum">{{fanscount}}</text>
+          <text class="userInfoFt">粉丝</text>
+        </view>
+        <view class="userInfoItem">
+          <text class="userInfoNum">{{followcount}}</text>
+          <text class="userInfoFt">关注</text>
+        </view>
+        <view class="userInfoItem">
+          <text class="userInfoNum">{{viewcount}}</text>
+          <text class="userInfoFt">人气</text>
+        </view>
+    </view>
+  </view>
+  <view class="userList">
+    <template is="workList" data="{{list}}"></template>
+  </view>
+</view>

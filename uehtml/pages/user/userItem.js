@@ -1,64 +1,74 @@
-// pages/design/design.js
-let utils = require("../../utils/utils.js");
+// pages/user/userItem.js
 var app = getApp();
+var utils = require("../../utils/utils.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[],
-    isEmpty: true,
+      list:[],
+      isEmpty:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    utils.http(app.globalData.commonUrl + "/work/getDesignList", this.addDesignList);
+    utils.http(app.globalData.commonUrl + "/user/userItem", this.addUser);
   },
-  addDesignList:function(data){
+  addUser: function(data){
     var list = [];
     if (!this.data.isEmpty) {
-      list = [...this.data.list, ...data.list];
+      list = [...this.data.list, ...data.data.workList];
     } else {
-      list = data.list;
+      list = data.data.workList;
       this.data.isEmpty = false;
     }
-    this.setData({ list: list })
-  },
-  enterUser: function (e) {
-    var id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../user/userItem?id=' + id
-    });
+
+    this.setData({
+      list:list,
+      nickname:data.data.nickname,
+      fanscount: data.data.fanscount,
+      followcount: data.data.followcount,
+      viewcount: data.data.viewcount
+    })
+
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  enterWork: function (e) {
+    // console.log(ev.currentTarget.dataset.id);
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../work/workItem?id=' + id
+    });
+  },
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
@@ -66,7 +76,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({ list: [] })
-    utils.http(app.globalData.commonUrl + "/work/getDesignList", this.addDesignList);
+    utils.http(app.globalData.commonUrl + "/user/userItem", this.addUser);
     wx.stopPullDownRefresh();
   },
 
@@ -74,13 +84,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    utils.http(app.globalData.commonUrl + "/work/getDesignList", this.addDesignList);
+    utils.http(app.globalData.commonUrl + "/user/userItem", this.addUser);
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

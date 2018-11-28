@@ -1,0 +1,19 @@
+<template name="workItem">
+  <view class="workItem" data-id="{{id}}" bindtap='enterWork'>
+      <image class="workImg" src="/images/111.jpg"></image>
+      <view class="workCon">
+        <text class="workTit">{{title}} {{subTitlt}}</text>
+        <view class="authorBox">
+          <text class="authorName">作者：</text>
+          <text class="authorFt">{{nickname}}</text>
+        </view>
+        <view class="workBot">
+          <view class="viewEye">
+            <image class="viewImg" src="/images/eye.png"></image>
+            <text>{{views}}</text>
+          </view>
+          <text>{{fieldtitle}}</text>
+        </view> 
+      </view>
+    </view>
+</template>

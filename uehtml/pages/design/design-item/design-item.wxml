@@ -1,5 +1,5 @@
 <template name="designItem">
-  <view class="designItem">
+  <view class="designItem" data-id="{{id}}"  bindtap = "enterUser">
     <view class="itemHead">
       <image class="itemHeadImg" src="/images/design/design-head-ico.jpg"></image>
       <view class="itemCon">

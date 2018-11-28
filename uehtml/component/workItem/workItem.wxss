@@ -1,0 +1,48 @@
+.workItem{
+  width:100%;
+  background:#fff;
+  height:200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.workItem .workImg{
+  width:280rpx;
+  height:180rpx;
+}
+.workItem .workCon{
+  flex:1;
+}
+.workCon{
+  padding:24rpx;
+  height:100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.workCon .workTit{
+  heihgt:28rpx;
+  font-size:28rpx;
+  line-height:28rpx;
+}
+.authorBox{
+  font-size:24rpx;
+  line-heihgt:24rpx;
+}
+.workBot{
+  height:40rpx;
+  width:100%;
+  display: flex;
+  align-items: center;
+  margin-top:auto;
+}
+.workBot .viewEye{
+  margin-right:auto;
+  display: flex;
+  align-items: center;
+}
+.viewEye .viewImg{
+  margin-right:12rpx;
+  width:32rpx;
+  height:20rpx;
+}

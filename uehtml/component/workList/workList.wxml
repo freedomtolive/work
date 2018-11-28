@@ -1,0 +1,7 @@
+<import src="/component/workItem/workItem" />
+
+<template name="workList">
+  <block wx:for="{{list}}" wx:key="postId" wx:for-index = "index">
+    <template is="workItem" data="{{...item}}"></template>
+  </block>
+</template>

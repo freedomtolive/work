@@ -30,9 +30,9 @@ Page({
     }
     this.setData({list: list})
   },
-  enterWork:function(ev){
+  enterWork:function(e){
     // console.log(ev.currentTarget.dataset.id);
-    var id = ev.currentTarget.dataset.id;
+    var id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../work/workItem?id=' + id
     });
