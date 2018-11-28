@@ -205,6 +205,7 @@ Page({
     }
     let commentObj = this.data.comments;
     let commentArr = commentObj.comment;
+    console.log(this.data.reverseOff)
     if (!this.data.reverseOff) {
       //评论的逻辑
       let newCommentObj = {};
@@ -257,11 +258,13 @@ Page({
       }
       let commentObj = this.data.comments;
       commentObj.valStr = "";
+      commentObj.reverseShow = false;
       this.setData({
         comments: commentObj,
         reverseOff: false
       })
-    },100)
+      console.log(this.data)
+    },140)
   },
   //点击完成时做的事情
   confirmFun() {
