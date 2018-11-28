@@ -26,13 +26,14 @@
                 </block>
               </view>
             </view>
-            <view class="replaveBox" catchtap='replyFun'>
+            <view class="replaveBox" data-url="{{item.userimage}}" data-id="{{item.id}}" catchtap='replyFun'>
               <text>[回复]</text>
             </view>
         </view>
       </block>
     </view>
     <view class="commentInputWrap">
+      <image class='reverseIco' wx:if="{{comments.reverseShow}}" src="{{comments.reverseUrl}}"></image>
       <input class="commentInput" name="comment" value="{{comments.valStr}}" placeholder='请输入评论的内容' bindinput = "commentTitle"></input>
       <text class="commentInputBtn" catchtap='commentFun'>评论</text>
     </view>

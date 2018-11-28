@@ -12,7 +12,8 @@ Page({
     shareShow:false,
     loginOff: null,
     nickName: null,
-    avatarUrl: null
+    avatarUrl: null,
+    reverseOff:false  //判断是评论还是回复
   },
 
   /**
@@ -31,6 +32,8 @@ Page({
   addWork(data){
     var comment = data.data.comments;
     comment.valStr = "";
+    comment.reverseShow = false;
+    comment.reverseUrl = '/images/design/design-head-ico.jpg';
     this.setData({
       imgList: data.data.images,
       content: data.data.content,
@@ -39,7 +42,7 @@ Page({
       postdate: data.data.postdate,
       likes: data.data.likes,
       headImg: "/images/111.jpg",
-      comments: comment
+      comments: comment,
     });
     WxParse.wxParse("article", 'html', this.data.content,this, 5);
   },
@@ -181,31 +184,64 @@ Page({
     })
   },
   //回复
-  replyFun : function(){
-    
+  replyFun : function(e){
+    var comment = this.data.comments
+    comment.reverseShow = true;
+    comment.reverseUrl = e.currentTarget.dataset.url;
+    this.setData({
+      comments: comment,
+      reverseOff:true,
+      reverseId: e.currentTarget.dataset.id
+    })
   },
   //评论
   commentFun : function(e){
     if (!this.data.comments.valStr) return;
-    //评论的逻辑
-    let commentObj = this.data.comments;
-    let commentArr = commentObj.comment;
-    let newCommentObj = {};
-    if(!this.data.loginOff){
+    if (!this.data.loginOff) {
       utils.getCode(this.loginSuc);
     }
-    newCommentObj.id = Math.random().toFixed(5) * 10000;
-    newCommentObj.nickname = this.data.nickName;
-    newCommentObj.userimage = this.data.avatarUrl;
-    newCommentObj.postdate = "1分钟内"
-    newCommentObj.content = this.data.comments.valStr;
-    commentObj.valStr = "";
-    commentObj.comment.unshift(newCommentObj);
-    var totalComment = this.data.comments.comment.length;
-    commentObj.totalComment = totalComment;
-    this.setData({
-      comments:commentObj
-    })
+    let commentObj = this.data.comments;
+    let commentArr = commentObj.comment;
+    if (!this.data.reverseOff) {
+      //评论的逻辑
+      let newCommentObj = {};
+      newCommentObj.id = Math.random().toFixed(5) * 10000;
+      newCommentObj.nickname = this.data.nickName;
+      newCommentObj.userimage = this.data.avatarUrl;
+      newCommentObj.postdate = "1分钟内"
+      newCommentObj.content = this.data.comments.valStr;
+      
+      commentObj.comment.unshift(newCommentObj);
+      var totalComment = this.data.comments.comment.length;
+      commentObj.totalComment = totalComment;
+      commentObj.valStr = "";
+      this.setData({
+        comments: commentObj
+      })
+    }else{
+      // 回复的逻辑
+      let reverseObj = {};
+      reverseObj.content = this.data.comments.valStr;
+      reverseObj.nickname = this.data.nickName;
+      reverseObj.userurl = this.data.avatarUrl;
+      commentObj.reverseShow = false;
+      for (let i = 0; i < commentArr.length; i++){
+        if (commentArr[i].id == this.data.reverseId){
+          if (commentArr[i].reply){
+            commentArr[i].reply.push(reverseObj)
+          }else{
+            commentArr[i].reply = [reverseObj]
+          }
+          commentObj.valStr = "";
+          this.setData({
+            comments: commentObj,
+            reverseOff: false
+          })
+          return;
+        }
+      }
+    }
+    
   },
   loginSuc(data) {
     // 登陆成功(存cookie，并且登录（此处应该发送ajax，这里就直接登录）)
