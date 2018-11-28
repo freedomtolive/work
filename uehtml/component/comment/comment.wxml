@@ -34,7 +34,7 @@
     </view>
     <view class="commentInputWrap">
       <image class='reverseIco' wx:if="{{comments.reverseShow}}" src="{{comments.reverseUrl}}"></image>
-      <input class="commentInput" name="comment" value="{{comments.valStr}}" placeholder='请输入评论的内容' bindinput = "commentTitle" bindblur="commentBlur"></input>
+      <input class="commentInput" name="comment" value="{{comments.valStr}}" focus="{{comments.focus}}" placeholder='{{comments.placeStr}}' bindinput = "commentTitle" bindblur="commentBlur"></input>
       <text class="commentInputBtn" catchtap='commentFun'>评论</text>
     </view>
   </view>

@@ -34,6 +34,7 @@ Page({
     comment.valStr = "";
     comment.reverseShow = false;
     comment.reverseUrl = '/images/design/design-head-ico.jpg';
+    comment.placeStr = "请输入评论的内容";
     this.setData({
       imgList: data.data.images,
       content: data.data.content,
@@ -188,6 +189,8 @@ Page({
     var comment = this.data.comments
     comment.reverseShow = true;
     comment.reverseUrl = e.currentTarget.dataset.url;
+    comment.focus = true;
+    comment.placeStr = "请输入回复的内容";
     this.setData({
       comments: comment,
       reverseOff:true,
@@ -225,6 +228,8 @@ Page({
       reverseObj.nickname = this.data.nickName;
       reverseObj.userurl = this.data.avatarUrl;
       commentObj.reverseShow = false;
+      commentObj.focus = false;
+      commentObj.placeStr = "请输入评论的内容";
       for (let i = 0; i < commentArr.length; i++){
         if (commentArr[i].id == this.data.reverseId){
           if (commentArr[i].reply){
@@ -252,6 +257,8 @@ Page({
     let commentObj = this.data.comments;
     commentObj.valStr = "";
     commentObj.reverseShow = false;
+    commentObj.focus = false;
+    commentObj.placeStr = "请输入评论的内容";
     this.setData({
       comments: commentObj,
       reverseOff: false
