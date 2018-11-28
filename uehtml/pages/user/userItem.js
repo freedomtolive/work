@@ -33,7 +33,7 @@ Page({
       followcount: data.data.followcount,
       viewcount: data.data.viewcount
     })
-
+    
     
   },
   /**

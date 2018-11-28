@@ -248,6 +248,15 @@ Page({
     wx.setStorageSync("openid", data.openid);
     app.globalData.loginOff = true;
   },
+  commentBlur(){
+    let commentObj = this.data.comments;
+    commentObj.valStr = "";
+    commentObj.reverseShow = false;
+    this.setData({
+      comments: commentObj,
+      reverseOff: false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
