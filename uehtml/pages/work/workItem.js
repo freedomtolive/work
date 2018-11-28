@@ -249,7 +249,6 @@ Page({
   // 点击提交的时候会调用失去焦点的函数，很尴尬，后期看看是否可以迭代的更为合理
   blurFun : function(){
     setTimeout(()=>{
-      console.log(this.data.inputCommit)
       if(this.data.inputCommit){
         this.setData({
           inputCommit:false
@@ -263,6 +262,12 @@ Page({
         reverseOff: false
       })
     },100)
+  },
+  //点击完成时做的事情
+  confirmFun() {
+    this.setData({
+      inputCommit: true
+    })
   },
   loginSuc(data) {
     // 登陆成功(存cookie，并且登录（此处应该发送ajax，这里就直接登录）)
