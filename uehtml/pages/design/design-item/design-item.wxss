@@ -1,6 +1,7 @@
 .designItem{
   padding:20rpx;
   background-color:#fff;
+  margin-bottom:20rpx;
 }
 .itemHead{
   height:80rpx;
@@ -39,4 +40,5 @@
 .designImg{
   width:216rpx;
   height:140rpx;
+  border-radius:3px;
 }

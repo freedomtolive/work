@@ -10,6 +10,8 @@
 .workItem .workImg{
   width:280rpx;
   height:180rpx;
+  margin-left:10rpx;
+  border-radius:3px;
 }
 .workItem .workCon{
   flex:1;
