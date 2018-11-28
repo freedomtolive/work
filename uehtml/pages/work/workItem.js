@@ -13,9 +13,9 @@ Page({
     loginOff: null,
     nickName: null,
     avatarUrl: null,
+    inputCommit:false,
     reverseOff:false  //判断是评论还是回复
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -34,7 +34,6 @@ Page({
     comment.valStr = "";
     comment.reverseShow = false;
     comment.reverseUrl = '/images/design/design-head-ico.jpg';
-    comment.placeStr = "请输入评论的内容";
     this.setData({
       imgList: data.data.images,
       content: data.data.content,
@@ -189,8 +188,6 @@ Page({
     var comment = this.data.comments
     comment.reverseShow = true;
     comment.reverseUrl = e.currentTarget.dataset.url;
-    comment.focus = true;
-    comment.placeStr = "请输入回复的内容";
     this.setData({
       comments: comment,
       reverseOff:true,
@@ -199,6 +196,9 @@ Page({
   },
   //评论
   commentFun : function(e){
+    this.setData({
+      inputCommit: true
+    })
     if (!this.data.comments.valStr) return;
     if (!this.data.loginOff) {
       utils.getCode(this.loginSuc);
@@ -228,8 +228,6 @@ Page({
       reverseObj.nickname = this.data.nickName;
       reverseObj.userurl = this.data.avatarUrl;
       commentObj.reverseShow = false;
-      commentObj.focus = false;
-      commentObj.placeStr = "请输入评论的内容";
       for (let i = 0; i < commentArr.length; i++){
         if (commentArr[i].id == this.data.reverseId){
           if (commentArr[i].reply){
@@ -248,21 +246,28 @@ Page({
     }
     
   },
+  // 点击提交的时候会调用失去焦点的函数，很尴尬，后期看看是否可以迭代的更为合理
+  blurFun : function(){
+    setTimeout(()=>{
+      console.log(this.data.inputCommit)
+      if(this.data.inputCommit){
+        this.setData({
+          inputCommit:false
+        })
+        return;
+      }
+      let commentObj = this.data.comments;
+      commentObj.valStr = "";
+      this.setData({
+        comments: commentObj,
+        reverseOff: false
+      })
+    },100)
+  },
   loginSuc(data) {
     // 登陆成功(存cookie，并且登录（此处应该发送ajax，这里就直接登录）)
     wx.setStorageSync("openid", data.openid);
     app.globalData.loginOff = true;
-  },
-  commentBlur(){
-    let commentObj = this.data.comments;
-    commentObj.valStr = "";
-    commentObj.reverseShow = false;
-    commentObj.focus = false;
-    commentObj.placeStr = "请输入评论的内容";
-    this.setData({
-      comments: commentObj,
-      reverseOff: false
-    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
