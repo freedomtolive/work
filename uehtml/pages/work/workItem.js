@@ -188,6 +188,7 @@ Page({
     var comment = this.data.comments
     comment.reverseShow = true;
     comment.reverseUrl = e.currentTarget.dataset.url;
+
     this.setData({
       comments: comment,
       reverseOff:true,
@@ -205,7 +206,6 @@ Page({
     }
     let commentObj = this.data.comments;
     let commentArr = commentObj.comment;
-    console.log(this.data.reverseOff)
     if (!this.data.reverseOff) {
       //评论的逻辑
       let newCommentObj = {};
@@ -245,26 +245,34 @@ Page({
         }
       }
     }
-    
   },
   // 点击提交的时候会调用失去焦点的函数，很尴尬，后期看看是否可以迭代的更为合理
-  blurFun : function(){
-    setTimeout(()=>{
-      if(this.data.inputCommit){
-        this.setData({
-          inputCommit:false
-        })
-        return;
-      }
-      let commentObj = this.data.comments;
-      commentObj.valStr = "";
-      commentObj.reverseShow = false;
-      this.setData({
-        comments: commentObj,
-        reverseOff: false
-      })
-      console.log(this.data)
-    },140)
+  // blurFun : function(){
+    // setTimeout(()=>{
+    //   if(this.data.inputCommit){
+    //     this.setData({
+    //       inputCommit:false
+    //     })
+    //     return;
+    //   }
+    //   let commentObj = this.data.comments;
+    //   commentObj.valStr = "";
+    //   commentObj.reverseShow = false;
+    //   this.setData({
+    //     comments: commentObj,
+    //     reverseOff: false
+    //   })
+    //   console.log(this.data)
+    // },140)
+  // },
+  cancelFun:function(){
+    let commentObj = this.data.comments;
+    commentObj.valStr = "";
+    commentObj.reverseShow = false;
+    this.setData({
+      comments: commentObj,
+      reverseOff: false
+    })
   },
   //点击完成时做的事情
   confirmFun() {

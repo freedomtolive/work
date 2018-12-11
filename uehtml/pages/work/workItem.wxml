@@ -11,7 +11,7 @@
     </view>
     <image class="workFollow" src="/images/design/follow-ico.png"></image>
   </view>
-  <view class="workWrap">
+  <view class="workWrap" catchtap='bodyCatch'>
     <view class="imageList">
       <block wx:for="{{imgList}}" wx:key="postId" wx:for-index = "index">
         <image class="workImg" src="{{item.url}}" data-src="{{item.url}}" data-idx="{{index}}" catchtap="viewImg"></image>
