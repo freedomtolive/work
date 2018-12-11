@@ -1,7 +1,6 @@
 /* pages/home/home.wxss */
 @import "../head/head";
 @import "/component/workList/workList";
-
 .fixHead{
   position:fixed;
   width:100%;
@@ -11,5 +10,50 @@
 .workBox{
   padding-top:82rpx;
 }
-
-
+.selectMask{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.94);
+  z-index:100;
+  transform: translateY(100%);
+  transition:all .3s ease-out;
+}
+.selectMask.show{
+  transform: translateY(0);
+}
+/* 选择 */
+.selectReco,.selectOwner,.selectTrade{
+  color: #8d8d8d;
+  font-size:28rpx;
+}
+.selectHead{
+  height:100rpx;
+  line-height:100rpx;
+  text-align: center;
+  font-size:32rpx;
+}
+.selectItem{
+  display: flex;
+  width:100%;
+  height:88rpx;
+  border-bottom:1px solid #1a1a1b;
+  align-items: center;
+  padding:0 80rpx;
+  box-sizing: border-box;
+}
+.selectFt{
+  margin-right:auto;
+}
+.selectIco{
+  width:32rpx;
+  height:32rpx;
+}
+.selectInnerFt{
+  text-indent: 20rpx;
+}
+.selectScroll{
+  overflow: hidden;
+}

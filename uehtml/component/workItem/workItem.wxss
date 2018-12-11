@@ -11,7 +11,7 @@
   width:280rpx;
   height:180rpx;
   margin-left:10rpx;
-  border-radius:3px;
+  border-radius:8rpx;
 }
 .workItem .workCon{
   flex:1;
@@ -31,6 +31,7 @@
 .authorBox{
   font-size:24rpx;
   line-heihgt:24rpx;
+  color:#b6b6b6;
 }
 .workBot{
   height:40rpx;

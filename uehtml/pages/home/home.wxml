@@ -1,20 +1,20 @@
 <import src="../head/head"/>
 <import src="/component/workList/workList" />
 
-<view class="continer">
+<view class="continer{{selectShow?' continerHid':''}}">
   <view class="fixHead">
     <!-- <template is="uednaHead"/>  -->
     <view class="hr"></view>
     <view class="head-select">
-      <view class="head-select-item">
+      <view data-value="trade" class="head-select-item" bindtap="selectFun">
         <text>全部</text>
         <image src='/images/bot-ico.png'></image> 
       </view>
-      <view class="head-select-item">
+      <view data-value="reco" class="head-select-item" bindtap="selectFun">
         <text>最新推荐</text>
         <image src='/images/bot-ico.png'></image> 
       </view>
-      <view class="head-select-item">
+      <view data-value="owner" class="head-select-item" bindtap="selectFun">
         <text>所有者</text>
         <image src='/images/bot-ico.png'></image> 
       </view>
@@ -23,6 +23,75 @@
   </view>
   <view class="workBox">
       <template is="workList" data="{{list}}" ></template>
+  </view>
+  <view class="selectMask{{selectShow?' show':''}}" catchtap='maskHide'>
+    <view class="selectTrade" wx:if="{{selectClass=='trade'}}">
+      <view class="selectHead">
+        <text>最新推荐</text>
+      </view>
+      <scroll-view class="selectScroll" scroll-y="true" style="height:{{selectHeight}}px">
+        <view class="selectList">
+          <block wx:for="{{selectlist}}" wx:key="id" wx:for-index = "index">
+            <view class="selectItem" data-index="{{item.id}}" catchtap='selectAllFun'>
+              <text class="selectFt">{{item.title}}</text>
+              <image wx:if="{{selectAllIndex == item.id}}" src="/images/select-icon.png" class="selectIco"></image>
+            </view>
+            <block wx:for="{{selectlist[index].sub}}" wx:key="id" wx:for-index = "index" wx:for-item="value">
+              <view class="selectItem" data-index="{{value.id}}" catchtap='selectAllFun'>
+                <text class="selectFt selectInnerFt">{{value.title}}</text>
+                <image wx:if="{{selectAllIndex == value.id}}" src="/images/select-icon.png" class="selectIco"></image>
+              </view>
+            </block>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="selectReco" wx:if="{{selectClass=='reco'}}">
+      <view class="selectHead">
+        <text>最新推荐</text>
+      </view>
+      <view class="selectList">
+        <view class="selectItem" data-index="1" catchtap='selectItemFun'>
+          <text class="selectFt">最新推荐</text>
+          <image wx:if="{{selectRecoIndex == 1}}" src="/images/select-icon.png" class="selectIco"></image>
+        </view>
+        <view class="selectItem" data-index="2" catchtap='selectItemFun'>
+          <text class="selectFt">最多喜欢</text>
+          <image wx:if="{{selectRecoIndex == 2}}" src="/images/select-icon.png" class="selectIco"></image>
+        </view>
+        <view class="selectItem" data-index="3" catchtap='selectItemFun'>
+          <text class="selectFt">最多浏览</text>
+          <image wx:if="{{selectRecoIndex == 3}}" src="/images/select-icon.png" class="selectIco"></image>
+        </view>
+        <view class="selectItem" data-index="4" catchtap='selectItemFun'>
+          <text class="selectFt">最多评论</text>
+          <image wx:if="{{selectRecoIndex == 4}}" src="/images/select-icon.png" class="selectIco"></image>
+        </view>
+        <view class="selectItem" data-index="5" catchtap='selectItemFun'>
+          <text class="selectFt">最新发布</text>
+          <image wx:if="{{selectRecoIndex == 5}}" src="/images/select-icon.png" class="selectIco"></image>
+        </view>
+      </view>
+    </view>
+    <view class="selectOwner" wx:if="{{selectClass=='owner'}}">
+      <view class="selectHead">
+        <text>所有者</text>
+      </view>
+      <view class="selectList">
+        <view class="selectItem" data-index="1" catchtap='selectOwnerFun'>
+          <text class="selectFt">所有者</text>
+          <image wx:if="{{selectOwnerIndex == 1}}" src="/images/select-icon.png" class="selectIco"></image>
+        </view>
+        <view class="selectItem" data-index="2" catchtap='selectOwnerFun'>
+          <text class="selectFt">自创</text>
+          <image wx:if="{{selectOwnerIndex == 2}}" src="/images/select-icon.png" class="selectIco"></image>
+        </view>
+        <view class="selectItem" data-index="3" catchtap='selectOwnerFun'>
+          <text class="selectFt">转载</text>
+          <image wx:if="{{selectOwnerIndex == 3}}" src="/images/select-icon.png" class="selectIco"></image>
+        </view>
+      </view>
+    </view>
   </view>
 </view>
 

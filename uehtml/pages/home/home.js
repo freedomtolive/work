@@ -9,7 +9,13 @@ Page({
   data: {
     list:[],
     isEmpty:true,
-    fixedBl:false
+    fixedBl:false,
+    selectShow:false,
+    selectClass:null,
+    selectAllIndex:1,
+    selectRecoIndex:1,
+    selectHeight:null,
+    selectOwnerIndex:1
   },
 
   /**
@@ -17,7 +23,11 @@ Page({
    */
   onLoad: function (options) {
     utils.http(app.globalData.commonUrl + "/work/getList", this.addHomeList);
-    
+    utils.http(app.globalData.commonUrl + "/select/selectList", this.addSelect);
+    let allHeight = wx.getSystemInfoSync().windowHeight - 50;
+    this.setData({
+      selectHeight: allHeight 
+    })
   },
   // 页面渲染函数
   addHomeList(data){
@@ -30,12 +40,48 @@ Page({
     }
     this.setData({list: list})
   },
+  // 页面选单渲染函数
+  addSelect(data){
+    let selectlist = data.data;
+    this.setData({
+      selectlist: selectlist
+    })
+  },
   enterWork:function(e){
-    // console.log(ev.currentTarget.dataset.id);
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../work/workItem?id=' + id
     });
+  },
+  // 选择浮层展示
+  selectFun:function(e){
+    this.setData({
+      selectShow:true,
+      selectClass: e.currentTarget.dataset.value
+    })
+  },
+  selectAllFun:function(e){
+    this.setData({
+      selectAllIndex: e.currentTarget.dataset.index,
+      selectShow: false
+    })
+  },
+  selectItemFun:function(e){
+    this.setData({
+      selectRecoIndex: e.currentTarget.dataset.index,
+      selectShow:false
+    })
+  },
+  selectOwnerFun:function(e){
+    this.setData({
+      selectOwnerIndex: e.currentTarget.dataset.index,
+      selectShow: false
+    })
+  },
+  maskHide:function(){
+    this.setData({
+      selectShow: false
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

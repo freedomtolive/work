@@ -40,5 +40,5 @@
 .designImg{
   width:216rpx;
   height:140rpx;
-  border-radius:3px;
+  border-radius:8rpx;
 }
