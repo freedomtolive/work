@@ -11,11 +11,14 @@ Page({
     isEmpty:true,
     fixedBl:false,
     selectShow:false,
-    selectClass:null,
+    selectClass: null,
+    selectHeight: null,
     selectAllIndex:1,
     selectRecoIndex:1,
-    selectHeight:null,
-    selectOwnerIndex:1
+    selectOwnerIndex:1,
+    allHead:"全部",
+    recoHead:"最新推荐",
+    ownerHead:"所有者"
   },
 
   /**
@@ -63,19 +66,22 @@ Page({
   selectAllFun:function(e){
     this.setData({
       selectAllIndex: e.currentTarget.dataset.index,
-      selectShow: false
+      selectShow: false,
+      allHead: e.currentTarget.dataset.value
     })
   },
   selectItemFun:function(e){
     this.setData({
       selectRecoIndex: e.currentTarget.dataset.index,
-      selectShow:false
+      selectShow: false,
+      recoHead: e.currentTarget.dataset.value
     })
   },
   selectOwnerFun:function(e){
     this.setData({
       selectOwnerIndex: e.currentTarget.dataset.index,
-      selectShow: false
+      selectShow: false,
+      ownerHead: e.currentTarget.dataset.value
     })
   },
   maskHide:function(){
